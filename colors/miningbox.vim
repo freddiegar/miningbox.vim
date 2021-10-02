@@ -249,6 +249,14 @@ let s:tabline_sel = s:colors.green
 
 " Highlighting Function: {{{
 
+" @see :highlight syntax
+" @see :highlight <GroupName>
+" @see :highlight clear <GroupName>
+" @see :verbose highlight <GroupName>
+" @see :source $VIMRUNTIME/syntax/hitest.vim
+" @see https://commons.wikimedia.org/wiki/File:Xterm_256color_chart.svg
+" @see https://alvinalexander.com/linux/vi-vim-editor-color-scheme-syntax/
+" @see https://terminal.sexy/
 function! s:HL(group, fg, ...) abort
     " foreground
     let fg = a:fg
@@ -260,6 +268,15 @@ function! s:HL(group, fg, ...) abort
     let emphasis = (a:0 >= 2 && strlen(a:2) ? a:2 : 'NONE,')[:-2]
 
     " highlight
+    " Option        Behaviour
+    " term          attributes in a B&W terminal
+    " cterm         attributes in a color terminal
+    " ctermfg       foreground color in a color terminal
+    " ctermbg       background color in a color terminal
+    " gui           attributes in the GUI
+    " guifg         foreground color in the GUI
+    " guibg         background color in the GUI
+    " > Options cterm and gui accept bold and underline
     let hl_string = [ 'highlight', a:group,
                 \ 'guifg=' . fg[0], 'ctermfg=' . fg[1],
                 \ 'guibg=' . bg[0], 'ctermbg=' . bg[1],
