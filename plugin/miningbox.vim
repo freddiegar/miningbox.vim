@@ -9,9 +9,22 @@ endif
 
 let g:loaded_miningbox = 'yes'
 
-if exists(":Goyo")
+if exists(':Limelight')
     " ========================================================
-    " Goyo Integration
+    " Limelight Integration
+    " @see https://github.com/junegunn/limelight.vim
+    " ========================================================
+
+    " Color name (:help cterm-colors) or ANSI code
+    let g:limelight_conceal_ctermfg = 238
+
+    " Color name (:help gui-colors) or RGB color
+    let g:limelight_conceal_guifg = '#2E2E2E'
+endif
+
+if exists(':Goyo')
+    " ========================================================
+    " Goyo Integration (+Limelight)
     " @see https://github.com/junegunn/goyo.vim
     " ========================================================
 
@@ -46,6 +59,10 @@ if exists(":Goyo")
         set nolist                              " No space, tabs chars
         set fillchars+=eob:\                    " Hide ~ in end of buffer
 
+        if exists(':Limelight')
+            Limelight
+        endif
+
         call <SID>goyo_enter_quit()
     endfunction
 
@@ -58,6 +75,10 @@ if exists(":Goyo")
         set cursorline&
         set list&
         set fillchars&
+
+        if exists(':Limelight')
+            Limelight!
+        endif
 
         call <SID>goyo_leave_quit()
     endfunction
