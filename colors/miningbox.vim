@@ -417,10 +417,8 @@ highlight! link WarningMsg MiningboxRedBold
 
 " Line number for :number and :# commands
 call s:HL('LineNr', s:colors.bg4, s:number_column)
-
 " Column where signs are displayed
-call s:HL('SignColumn', s:none, s:sign_column)
-
+call s:HL('SignColumn', s:colors.bg4, s:sign_column)
 " Line used for closed folds
 call s:HL('Folded', s:colors.gray, s:colors.bg1, s:italic)
 " Column where folds are displayed
@@ -540,10 +538,10 @@ highlight! link SneakScope DiffAdd
 
 " GitGutter: {{{
 
-highlight! link GitGutterAdd SignColumn
-highlight! link GitGutterChange SignColumn
-highlight! link GitGutterDelete SignColumn
-highlight! link GitGutterChangeDelete SignColumn
+call s:HL('GitGutterAdd', s:colors.bg4, s:sign_column)
+call s:HL('GitGutterChange', s:colors.bg4, s:sign_column)
+call s:HL('GitGutterDelete', s:colors.bg4, s:sign_column)
+call s:HL('GitGutterChangeDelete', s:colors.bg4, s:sign_column)
 
 " }}}
 
