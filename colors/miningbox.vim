@@ -258,17 +258,16 @@ let s:tabline_sel = s:colors.green
 " @see https://alvinalexander.com/linux/vi-vim-editor-color-scheme-syntax/
 " @see https://terminal.sexy/
 function! s:HL(group, fg, ...) abort
-    " foreground
+    " Foreground
     let fg = a:fg
 
-    " background
+    " Background
     let bg = a:0 >= 1 ? a:1 : s:none
 
-    " emphasis
+    " Emphasis
     let emphasis = (a:0 >= 2 && strlen(a:2) ? a:2 : 'NONE,')[:-2]
 
-    " highlight
-    " Option        Behaviour
+    " Highlight
     " term          attributes in a B&W terminal
     " cterm         attributes in a color terminal
     " ctermfg       foreground color in a color terminal
@@ -276,6 +275,7 @@ function! s:HL(group, fg, ...) abort
     " gui           attributes in the GUI
     " guifg         foreground color in the GUI
     " guibg         background color in the GUI
+
     " > Options cterm and gui accept bold and underline
     let hl_string = [ 'highlight', a:group,
                 \ 'guifg=' . fg[0], 'ctermfg=' . fg[1],
@@ -283,7 +283,8 @@ function! s:HL(group, fg, ...) abort
                 \ 'gui=' . emphasis, 'cterm=' . emphasis
                 \ ]
 
-    " special
+    " Special
+    " guisp         used for undercurl and strikethrough
     if a:0 >= 3
         call add(hl_string, 'guisp=' . a:3[0])
     endif
@@ -295,48 +296,48 @@ endfunction
 
 "  Highlight Groups: {{{
 
-call s:HL('Fg0', s:colors.fg0)
-call s:HL('Fg1', s:colors.fg1)
-call s:HL('Fg2', s:colors.fg2)
-call s:HL('Fg3', s:colors.fg3)
-call s:HL('Fg4', s:colors.fg4)
-call s:HL('Gray', s:colors.gray)
-call s:HL('Bg0', s:colors.bg0)
-call s:HL('Bg1', s:colors.bg1)
-call s:HL('Bg2', s:colors.bg2)
-call s:HL('Bg3', s:colors.bg3)
-call s:HL('Bg4', s:colors.bg4)
+call s:HL('MiningboxFg0', s:colors.fg0)
+call s:HL('MiningboxFg1', s:colors.fg1)
+call s:HL('MiningboxFg2', s:colors.fg2)
+call s:HL('MiningboxFg3', s:colors.fg3)
+call s:HL('MiningboxFg4', s:colors.fg4)
+call s:HL('MiningboxGray', s:colors.gray)
+call s:HL('MiningboxBg0', s:colors.bg0)
+call s:HL('MiningboxBg1', s:colors.bg1)
+call s:HL('MiningboxBg2', s:colors.bg2)
+call s:HL('MiningboxBg3', s:colors.bg3)
+call s:HL('MiningboxBg4', s:colors.bg4)
 
-call s:HL('Red', s:colors.red)
-call s:HL('RedBold', s:colors.red, s:none, s:bold)
-call s:HL('Green', s:colors.green)
-call s:HL('GreenBold', s:colors.green, s:none, s:bold)
-call s:HL('Yellow', s:colors.yellow)
-call s:HL('YellowBold', s:colors.yellow, s:none, s:bold)
-call s:HL('Blue', s:colors.blue)
-call s:HL('BlueBold', s:colors.blue, s:none, s:bold)
-call s:HL('Purple', s:colors.purple)
-call s:HL('PurpleBold', s:colors.purple, s:none, s:bold)
-call s:HL('Aqua', s:colors.aqua)
-call s:HL('AquaBold', s:colors.aqua, s:none, s:bold)
-call s:HL('Orange', s:colors.orange)
-call s:HL('OrangeBold', s:colors.orange, s:none, s:bold)
+call s:HL('MiningboxRed', s:colors.red)
+call s:HL('MiningboxRedBold', s:colors.red, s:none, s:bold)
+call s:HL('MiningboxGreen', s:colors.green)
+call s:HL('MiningboxGreenBold', s:colors.green, s:none, s:bold)
+call s:HL('MiningboxYellow', s:colors.yellow)
+call s:HL('MiningboxYellowBold', s:colors.yellow, s:none, s:bold)
+call s:HL('MiningboxBlue', s:colors.blue)
+call s:HL('MiningboxBlueBold', s:colors.blue, s:none, s:bold)
+call s:HL('MiningboxPurple', s:colors.purple)
+call s:HL('MiningboxPurpleBold', s:colors.purple, s:none, s:bold)
+call s:HL('MiningboxAqua', s:colors.aqua)
+call s:HL('MiningboxAquaBold', s:colors.aqua, s:none, s:bold)
+call s:HL('MiningboxOrange', s:colors.orange)
+call s:HL('MiningboxOrangeBold', s:colors.orange, s:none, s:bold)
 
-call s:HL('RedSign', s:colors.red, s:sign_column, s:invert_signs)
-call s:HL('GreenSign', s:colors.green, s:sign_column, s:invert_signs)
-call s:HL('YellowSign', s:colors.yellow, s:sign_column, s:invert_signs)
-call s:HL('BlueSign', s:colors.blue, s:sign_column, s:invert_signs)
-call s:HL('PurpleSign', s:colors.purple, s:sign_column, s:invert_signs)
-call s:HL('AquaSign', s:colors.aqua, s:sign_column, s:invert_signs)
-call s:HL('OrangeSign', s:colors.orange, s:sign_column, s:invert_signs)
+call s:HL('MiningboxRedSign', s:colors.red, s:sign_column, s:invert_signs)
+call s:HL('MiningboxGreenSign', s:colors.green, s:sign_column, s:invert_signs)
+call s:HL('MiningboxYellowSign', s:colors.yellow, s:sign_column, s:invert_signs)
+call s:HL('MiningboxBlueSign', s:colors.blue, s:sign_column, s:invert_signs)
+call s:HL('MiningboxPurpleSign', s:colors.purple, s:sign_column, s:invert_signs)
+call s:HL('MiningboxAquaSign', s:colors.aqua, s:sign_column, s:invert_signs)
+call s:HL('MiningboxOrangeSign', s:colors.orange, s:sign_column, s:invert_signs)
 
-call s:HL('RedUnderline', s:none, s:none, s:undercurl, s:colors.red)
-call s:HL('GreenUnderline', s:none, s:none, s:undercurl, s:colors.green)
-call s:HL('YellowUnderline', s:none, s:none, s:undercurl, s:colors.yellow)
-call s:HL('BlueUnderline', s:none, s:none, s:undercurl, s:colors.blue)
-call s:HL('PurpleUnderline', s:none, s:none, s:undercurl, s:colors.purple)
-call s:HL('AquaUnderline', s:none, s:none, s:undercurl, s:colors.aqua)
-call s:HL('OrangeUnderline', s:none, s:none, s:undercurl, s:colors.orange)
+call s:HL('MiningboxRedUnderline', s:none, s:none, s:undercurl, s:colors.red)
+call s:HL('MiningboxGreenUnderline', s:none, s:none, s:undercurl, s:colors.green)
+call s:HL('MiningboxYellowUnderline', s:none, s:none, s:undercurl, s:colors.yellow)
+call s:HL('MiningboxBlueUnderline', s:none, s:none, s:undercurl, s:colors.blue)
+call s:HL('MiningboxPurpleUnderline', s:none, s:none, s:undercurl, s:colors.purple)
+call s:HL('MiningboxAquaUnderline', s:none, s:none, s:undercurl, s:colors.aqua)
+call s:HL('MiningboxOrangeUnderline', s:none, s:none, s:undercurl, s:colors.orange)
 
 " }}}
 
@@ -394,21 +395,21 @@ call s:HL('VertSplit', s:colors.bg3, s:vert_split)
 call s:HL('WildMenu', s:colors.blue, s:colors.bg2, s:bold)
 
 " Directory names, special names in listing
-highlight! link Directory GreenBold
+highlight! link Directory MiningboxGreenBold
 
 " Titles for output from :set all, :autocmd, etc.
-highlight! link Title GreenBold
+highlight! link Title MiningboxGreenBold
 
 " Error messages on the command line
 call s:HL('ErrorMsg',   s:colors.bg0, s:colors.red, s:bold)
 " More prompt: -- More --
-highlight! link MoreMsg YellowBold
+highlight! link MoreMsg MiningboxYellowBold
 " Current mode message: -- INSERT --
-highlight! link ModeMsg YellowBold
+highlight! link ModeMsg MiningboxYellowBold
 " 'Press enter' prompt and yes/no questions
-highlight! link Question OrangeBold
+highlight! link Question MiningboxOrangeBold
 " Warning messages
-highlight! link WarningMsg RedBold
+highlight! link WarningMsg MiningboxRedBold
 
 " }}}
 
@@ -433,7 +434,7 @@ call s:HL('FoldColumn', s:colors.gray, s:colors.bg1)
 call s:HL('Cursor', s:none, s:none, s:inverse)
 " Visual mode cursor, selection
 highlight! link vCursor Cursor
-" Input moder cursor
+" Input mode cursor
 highlight! link iCursor Cursor
 " Language mapping cursor
 highlight! link lCursor Cursor
@@ -442,64 +443,64 @@ highlight! link lCursor Cursor
 
 " Syntax Highlighting: {{{
 
-highlight! link Special Orange
+highlight! link Special MiningboxOrange
 
 call s:HL('Comment', s:colors.gray, s:none, s:italic)
 call s:HL('Todo', s:vim_fg, s:none, s:bold . s:italic)
 call s:HL('Error', s:colors.red, s:none, s:bold . s:inverse)
 
 " Generic statement
-highlight! link Statement Red
+highlight! link Statement MiningboxRed
 " if, then, else, endif, switch, etc.
-highlight! link Conditional Red
+highlight! link Conditional MiningboxRed
 " for, do, while, etc.
-highlight! link Repeat Red
+highlight! link Repeat MiningboxRed
 " case, default, etc.
-highlight! link Label Red
+highlight! link Label MiningboxRed
 " try, catch, throw
-highlight! link Exception Red
+highlight! link Exception MiningboxRed
 " sizeof, "+", "*", etc.
-highlight! link Operator Fg1
+highlight! link Operator MiningboxFg1
 " Any other keyword
-highlight! link Keyword Red
+highlight! link Keyword MiningboxRed
 
 " Variable name
-highlight! link Identifier Blue
+highlight! link Identifier MiningboxBlue
 " Function name
-highlight! link Function GreenBold
+highlight! link Function MiningboxGreenBold
 
 " Generic preprocessor
-highlight! link PreProc Aqua
+highlight! link PreProc MiningboxAqua
 " Preprocessor #include
-highlight! link Include Aqua
+highlight! link Include MiningboxAqua
 " Preprocessor #define
-highlight! link Define Aqua
+highlight! link Define MiningboxAqua
 " Same as Define
-highlight! link Macro Aqua
+highlight! link Macro MiningboxAqua
 " Preprocessor #if, #else, #endif, etc.
-highlight! link PreCondit Aqua
+highlight! link PreCondit MiningboxAqua
 
 " Generic constant
-highlight! link Constant Purple
+highlight! link Constant MiningboxPurple
 " Character constant: 'c', '/n'
-highlight! link Character Purple
+highlight! link Character MiningboxPurple
 " String constant: "this is a string"
 call s:HL('String',  s:colors.green, s:none, s:italic)
 " Boolean constant: TRUE, false
-highlight! link Boolean Purple
+highlight! link Boolean MiningboxPurple
 " Number constant: 234, 0xff
-highlight! link Number Purple
+highlight! link Number MiningboxPurple
 " Floating point constant: 2.3e10
-highlight! link Float Purple
+highlight! link Float MiningboxPurple
 
 " Generic type
-highlight! link Type Yellow
+highlight! link Type MiningboxYellow
 " static, register, volatile, etc
-highlight! link StorageClass Orange
+highlight! link StorageClass MiningboxOrange
 " struct, union, enum, etc.
-highlight! link Structure Aqua
+highlight! link Structure MiningboxAqua
 " typedef
-highlight! link Typedef Yellow
+highlight! link Typedef MiningboxYellow
 
 " }}}
 
@@ -548,8 +549,8 @@ highlight! link GitGutterChangeDelete SignColumn
 
 " Syntastic: {{{
 
-highlight! link SyntasticError RedUnderline
-highlight! link SyntasticWarning YellowUnderline
+highlight! link SyntasticError MiningboxRedUnderline
+highlight! link SyntasticWarning MiningboxYellowUnderline
 
 " Syntastic sign with same color of theme
 highlight! link SyntasticErrorSign SignColumn
@@ -595,16 +596,16 @@ call s:HL('Fzf3', s:colors.fg4, s:colors.bg1)
 
 " Netrw: {{{
 
-highlight! link netrwDir Aqua
-highlight! link netrwClassify Aqua
-highlight! link netrwLink Gray
-highlight! link netrwSymLink Fg1
-highlight! link netrwExe Yellow
-highlight! link netrwComment Gray
-highlight! link netrwList Blue
-highlight! link netrwHelpCmd Aqua
-highlight! link netrwCmdSep Fg3
-highlight! link netrwVersion Green
+highlight! link netrwDir MiningboxAqua
+highlight! link netrwClassify MiningboxAqua
+highlight! link netrwLink MiningboxGray
+highlight! link netrwSymLink MiningboxFg1
+highlight! link netrwExe MiningboxYellow
+highlight! link netrwComment MiningboxGray
+highlight! link netrwList MiningboxBlue
+highlight! link netrwHelpCmd MiningboxAqua
+highlight! link netrwCmdSep MiningboxFg3
+highlight! link netrwVersion MiningboxGreen
 
 " }}}
 
@@ -617,26 +618,26 @@ highlight! StatusLineNC guibg=NONE ctermbg=NONE
 
 " coc.nvim: {{{
 
-highlight! link CocErrorSign RedSign
-highlight! link CocWarningSign OrangeSign
-highlight! link CocInfoSign BlueSign
-highlight! link CocHintSign AquaSign
-highlight! link CocErrorFloat Red
-highlight! link CocWarningFloat Orange
-highlight! link CocInfoFloat Blue
-highlight! link CocHintFloat Aqua
-highlight! link CocDiagnosticsError Red
-highlight! link CocDiagnosticsWarning Orange
-highlight! link CocDiagnosticsInfo Blue
-highlight! link CocDiagnosticsHint Aqua
+highlight! link CocErrorSign MiningboxRedSign
+highlight! link CocWarningSign MiningboxOrangeSign
+highlight! link CocInfoSign MiningboxBlueSign
+highlight! link CocHintSign MiningboxAquaSign
+highlight! link CocErrorFloat MiningboxRed
+highlight! link CocWarningFloat MiningboxOrange
+highlight! link CocInfoFloat MiningboxBlue
+highlight! link CocHintFloat MiningboxAqua
+highlight! link CocDiagnosticsError MiningboxRed
+highlight! link CocDiagnosticsWarning MiningboxOrange
+highlight! link CocDiagnosticsInfo MiningboxBlue
+highlight! link CocDiagnosticsHint MiningboxAqua
 
-highlight! link CocSelectedText Red
-highlight! link CocCodeLens Gray
+highlight! link CocSelectedText MiningboxRed
+highlight! link CocCodeLens MiningboxGray
 
-highlight! link CocErrorHighlight RedUnderline
-highlight! link CocWarningHighlight OrangeUnderline
-highlight! link CocInfoHighlight BlueUnderline
-highlight! link CocHintHighlight AquaUnderline
+highlight! link CocErrorHighlight MiningboxRedUnderline
+highlight! link CocWarningHighlight MiningboxOrangeUnderline
+highlight! link CocInfoHighlight MiningboxBlueUnderline
+highlight! link CocHintHighlight MiningboxAquaUnderline
 
 " }}}
 
@@ -645,31 +646,31 @@ highlight! link CocHintHighlight AquaUnderline
 
 " diff: {{{
 
-highlight! link diffAdded Green
-highlight! link diffRemoved Red
-highlight! link diffChanged Aqua
+highlight! link diffAdded MiningboxGreen
+highlight! link diffRemoved MiningboxRed
+highlight! link diffChanged MiningboxAqua
 
-highlight! link diffFile Orange
-highlight! link diffNewFile Yellow
+highlight! link diffFile MiningboxOrange
+highlight! link diffNewFile MiningboxYellow
 
-highlight! link diffLine Blue
+highlight! link diffLine MiningboxBlue
 
 " }}}
 
 " html: {{{
 
-highlight! link htmlTag AquaBold
-highlight! link htmlEndTag AquaBold
+highlight! link htmlTag MiningboxAquaBold
+highlight! link htmlEndTag MiningboxAquaBold
 
-highlight! link htmlTagName Blue
-highlight! link htmlArg Orange
+highlight! link htmlTagName MiningboxBlue
+highlight! link htmlArg MiningboxOrange
 
-highlight! link htmlTagN Fg1
-highlight! link htmlSpecialTagName Blue
+highlight! link htmlTagN MiningboxFg1
+highlight! link htmlSpecialTagName MiningboxBlue
 
 call s:HL('htmlLink', s:colors.fg4, s:none, s:underline)
 
-highlight! link htmlSpecialChar Red
+highlight! link htmlSpecialChar MiningboxRed
 
 call s:HL('htmlBold', s:vim_fg, s:vim_bg, s:bold)
 call s:HL('htmlBoldUnderline', s:vim_fg, s:vim_bg, s:bold . s:underline)
@@ -684,27 +685,27 @@ call s:HL('htmlItalic', s:vim_fg, s:vim_bg, s:italic)
 
 " xml: {{{
 
-highlight! link xmlTag AquaBold
-highlight! link xmlEndTag AquaBold
-highlight! link xmlTagName Blue
-highlight! link xmlEqual Blue
-highlight! link docbkKeyword AquaBold
+highlight! link xmlTag MiningboxAquaBold
+highlight! link xmlEndTag MiningboxAquaBold
+highlight! link xmlTagName MiningboxBlue
+highlight! link xmlEqual MiningboxBlue
+highlight! link docbkKeyword MiningboxAquaBold
 
-highlight! link xmlDocTypeDecl Gray
-highlight! link xmlDocTypeKeyword Purple
-highlight! link xmlCdataStart Gray
-highlight! link xmlCdataCdata Purple
-highlight! link dtdFunction Gray
-highlight! link dtdTagName Purple
+highlight! link xmlDocTypeDecl MiningboxGray
+highlight! link xmlDocTypeKeyword MiningboxPurple
+highlight! link xmlCdataStart MiningboxGray
+highlight! link xmlCdataCdata MiningboxPurple
+highlight! link dtdFunction MiningboxGray
+highlight! link dtdTagName MiningboxPurple
 
-highlight! link xmlAttrib Orange
-highlight! link xmlProcessingDelim Gray
-highlight! link dtdParamEntityPunct Gray
-highlight! link dtdParamEntityDPunct Gray
-highlight! link xmlAttribPunct Gray
+highlight! link xmlAttrib MiningboxOrange
+highlight! link xmlProcessingDelim MiningboxGray
+highlight! link dtdParamEntityPunct MiningboxGray
+highlight! link dtdParamEntityDPunct MiningboxGray
+highlight! link xmlAttribPunct MiningboxGray
 
-highlight! link xmlEntity Red
-highlight! link xmlEntityPunct Red
+highlight! link xmlEntity MiningboxRed
+highlight! link xmlEntityPunct MiningboxRed
 
 " }}}
 
@@ -712,132 +713,132 @@ highlight! link xmlEntityPunct Red
 
 call s:HL('vimCommentTitle', s:colors.light, s:none, s:bold . s:italic)
 
-highlight! link vimNotation Orange
-highlight! link vimBracket Orange
-highlight! link vimMapModKey Orange
-highlight! link vimFuncSID Fg3
-highlight! link vimSetSep Fg3
-highlight! link vimSep Fg3
-highlight! link vimContinue Fg3
+highlight! link vimNotation MiningboxOrange
+highlight! link vimBracket MiningboxOrange
+highlight! link vimMapModKey MiningboxOrange
+highlight! link vimFuncSID MiningboxFg3
+highlight! link vimSetSep MiningboxFg3
+highlight! link vimSep MiningboxFg3
+highlight! link vimContinue MiningboxFg3
 
 " }}}
 
 " c: {{{
 
-highlight! link cOperator Purple
-highlight! link cppOperator Purple
-highlight! link cStructure Orange
+highlight! link cOperator MiningboxPurple
+highlight! link cppOperator MiningboxPurple
+highlight! link cStructure MiningboxOrange
 
 " }}}
 
 " python: {{{
 
-highlight! link pythonBuiltin Orange
-highlight! link pythonBuiltinObj Orange
-highlight! link pythonBuiltinFunc Orange
-highlight! link pythonFunction Aqua
-highlight! link pythonDecorator Red
-highlight! link pythonInclude Blue
-highlight! link pythonImport Blue
-highlight! link pythonRun Blue
-highlight! link pythonCoding Blue
-highlight! link pythonOperator Red
-highlight! link pythonException Red
-highlight! link pythonExceptions Purple
-highlight! link pythonBoolean Purple
-highlight! link pythonDot Fg3
-highlight! link pythonConditional Red
-highlight! link pythonRepeat Red
-highlight! link pythonDottedName GreenBold
+highlight! link pythonBuiltin MiningboxOrange
+highlight! link pythonBuiltinObj MiningboxOrange
+highlight! link pythonBuiltinFunc MiningboxOrange
+highlight! link pythonFunction MiningboxAqua
+highlight! link pythonDecorator MiningboxRed
+highlight! link pythonInclude MiningboxBlue
+highlight! link pythonImport MiningboxBlue
+highlight! link pythonRun MiningboxBlue
+highlight! link pythonCoding MiningboxBlue
+highlight! link pythonOperator MiningboxRed
+highlight! link pythonException MiningboxRed
+highlight! link pythonExceptions MiningboxPurple
+highlight! link pythonBoolean MiningboxPurple
+highlight! link pythonDot MiningboxFg3
+highlight! link pythonConditional MiningboxRed
+highlight! link pythonRepeat MiningboxRed
+highlight! link pythonDottedName MiningboxGreenBold
 
 " }}}
 
 " css: {{{
 
-highlight! link cssBraces Blue
-highlight! link cssFunctionName Yellow
-highlight! link cssIdentifier Orange
-highlight! link cssClassName Green
-highlight! link cssColor Blue
-highlight! link cssSelectorOp Blue
-highlight! link cssSelectorOp2 Blue
-highlight! link cssImportant Green
-highlight! link cssVendor Fg1
+highlight! link cssBraces MiningboxBlue
+highlight! link cssFunctionName MiningboxYellow
+highlight! link cssIdentifier MiningboxOrange
+highlight! link cssClassName MiningboxGreen
+highlight! link cssColor MiningboxBlue
 
-highlight! link cssTextProp Aqua
-highlight! link cssAnimationProp Aqua
-highlight! link cssUIProp Yellow
-highlight! link cssTransformProp Aqua
-highlight! link cssTransitionProp Aqua
-highlight! link cssPrintProp Aqua
-highlight! link cssPositioningProp Yellow
-highlight! link cssBoxProp Aqua
-highlight! link cssFontDescriptorProp Aqua
-highlight! link cssFlexibleBoxProp Aqua
-highlight! link cssBorderOutlineProp Aqua
-highlight! link cssBackgroundProp Aqua
-highlight! link cssMarginProp Aqua
-highlight! link cssListProp Aqua
-highlight! link cssTableProp Aqua
-highlight! link cssFontProp Aqua
-highlight! link cssPaddingProp Aqua
-highlight! link cssDimensionProp Aqua
-highlight! link cssRenderProp Aqua
-highlight! link cssColorProp Aqua
-highlight! link cssGeneratedContentProp Aqua
+highlight! link cssSelectorOp MiningboxBlue
+highlight! link cssSelectorOp2 MiningboxBlue
+highlight! link cssImportant MiningboxGreen
+highlight! link cssVendor MiningboxFg1
+highlight! link cssTextProp MiningboxAqua
+highlight! link cssAnimationProp MiningboxAqua
+highlight! link cssUIProp MiningboxYellow
+highlight! link cssTransformProp MiningboxAqua
+highlight! link cssTransitionProp MiningboxAqua
+highlight! link cssPrintProp MiningboxAqua
+highlight! link cssPositioningProp MiningboxYellow
+highlight! link cssBoxProp MiningboxAqua
+highlight! link cssFontDescriptorProp MiningboxAqua
+highlight! link cssFlexibleBoxProp MiningboxAqua
+highlight! link cssBorderOutlineProp MiningboxAqua
+highlight! link cssBackgroundProp MiningboxAqua
+highlight! link cssMarginProp MiningboxAqua
+highlight! link cssListProp MiningboxAqua
+highlight! link cssTableProp MiningboxAqua
+highlight! link cssFontProp MiningboxAqua
+highlight! link cssPaddingProp MiningboxAqua
+highlight! link cssDimensionProp MiningboxAqua
+highlight! link cssRenderProp MiningboxAqua
+highlight! link cssColorProp MiningboxAqua
+highlight! link cssGeneratedContentProp MiningboxAqua
 
 " }}}
 
 " javascript: {{{
 
-highlight! link javaScriptBraces Fg1
-highlight! link javaScriptFunction Aqua
-highlight! link javaScriptIdentifier Red
-highlight! link javaScriptMember Blue
-highlight! link javaScriptNumber Purple
-highlight! link javaScriptNull Purple
-highlight! link javaScriptParens Fg3
+highlight! link javaScriptBraces MiningboxFg1
+highlight! link javaScriptFunction MiningboxAqua
+highlight! link javaScriptIdentifier MiningboxRed
+highlight! link javaScriptMember MiningboxBlue
+highlight! link javaScriptNumber MiningboxPurple
+highlight! link javaScriptNull MiningboxPurple
+highlight! link javaScriptParens MiningboxFg3
 
 " }}}
 
 " typescript: {{{
 
-highlight! link typescriptReserved Aqua
-highlight! link typescriptLabel Aqua
-highlight! link typescriptFuncKeyword Aqua
-highlight! link typescriptIdentifier Orange
-highlight! link typescriptBraces Fg1
-highlight! link typescriptEndColons Fg1
-highlight! link typescriptDOMObjects Fg1
-highlight! link typescriptAjaxMethods Fg1
-highlight! link typescriptLogicSymbols Fg1
-highlight! link typescriptDocSeeTag Comment
-highlight! link typescriptDocParam Comment
-highlight! link typescriptDocTags vimCommentTitle
-highlight! link typescriptGlobalObjects Fg1
-highlight! link typescriptParens Fg3
-highlight! link typescriptOpSymbols Fg3
-highlight! link typescriptHtmlElemProperties Fg1
-highlight! link typescriptNull Purple
-highlight! link typescriptInterpolationDelimiter Aqua
+highlight! link typescriptReserved MiningboxAqua
+highlight! link typescriptLabel MiningboxAqua
+highlight! link typescriptFuncKeyword MiningboxAqua
+highlight! link typescriptIdentifier MiningboxOrange
+highlight! link typescriptBraces MiningboxFg1
+highlight! link typescriptEndColons MiningboxFg1
+highlight! link typescriptDOMObjects MiningboxFg1
+highlight! link typescriptAjaxMethods MiningboxFg1
+highlight! link typescriptLogicSymbols MiningboxFg1
+highlight! link typescriptDocSeeTag MiningboxComment
+highlight! link typescriptDocParam MiningboxComment
+highlight! link typescriptDocTags MiningboxvimCommentTitle
+highlight! link typescriptGlobalObjects MiningboxFg1
+highlight! link typescriptParens MiningboxFg3
+highlight! link typescriptOpSymbols MiningboxFg3
+highlight! link typescriptHtmlElemProperties MiningboxFg1
+highlight! link typescriptNull MiningboxPurple
+highlight! link typescriptInterpolationDelimiter MiningboxAqua
 
 " }}}
 
 " go: {{{
 
-highlight! link goDirective Aqua
-highlight! link goConstants Purple
-highlight! link goDeclaration Red
-highlight! link goDeclType Blue
-highlight! link goBuiltins Orange
+highlight! link goDirective MiningboxAqua
+highlight! link goConstants MiningboxPurple
+highlight! link goDeclaration MiningboxRed
+highlight! link goDeclType MiningboxBlue
+highlight! link goBuiltins MiningboxOrange
 
 " }}}
 
 " lua: {{{
 
-highlight! link luaIn Red
-highlight! link luaFunction Aqua
-highlight! link luaTable Orange
+highlight! link luaIn MiningboxRed
+highlight! link luaFunction MiningboxAqua
+highlight! link luaTable MiningboxOrange
 
 " }}}
 
@@ -847,55 +848,55 @@ call s:HL('markdownItalic', s:fg3, s:none, s:italic)
 call s:HL('markdownBold', s:fg3, s:none, s:bold)
 call s:HL('markdownBoldItalic', s:fg3, s:none, s:bold . s:italic)
 
-highlight! link markdownH1 GreenBold
-highlight! link markdownH2 GreenBold
-highlight! link markdownH3 YellowBold
-highlight! link markdownH4 YellowBold
-highlight! link markdownH5 Yellow
-highlight! link markdownH6 Yellow
+highlight! link markdownH1 MiningboxGreenBold
+highlight! link markdownH2 MiningboxGreenBold
+highlight! link markdownH3 MiningboxYellowBold
+highlight! link markdownH4 MiningboxYellowBold
+highlight! link markdownH5 MiningboxYellow
+highlight! link markdownH6 MiningboxYellow
 
-highlight! link markdownCode Aqua
-highlight! link markdownCodeBlock Aqua
-highlight! link markdownCodeDelimiter Aqua
+highlight! link markdownCode MiningboxAqua
+highlight! link markdownCodeBlock MiningboxAqua
+highlight! link markdownCodeDelimiter MiningboxAqua
 
-highlight! link markdownBlockquote Gray
-highlight! link markdownListMarker Gray
-highlight! link markdownOrderedListMarker Gray
-highlight! link markdownRule Gray
-highlight! link markdownHeadingRule Gray
+highlight! link markdownBlockquote MiningboxGray
+highlight! link markdownListMarker MiningboxGray
+highlight! link markdownOrderedListMarker MiningboxGray
+highlight! link markdownRule MiningboxGray
+highlight! link markdownHeadingRule MiningboxGray
 
-highlight! link markdownUrlDelimiter Fg3
-highlight! link markdownLinkDelimiter Fg3
-highlight! link markdownLinkTextDelimiter Fg3
+highlight! link markdownUrlDelimiter MiningboxFg3
+highlight! link markdownLinkDelimiter MiningboxFg3
+highlight! link markdownLinkTextDelimiter MiningboxFg3
 
-highlight! link markdownHeadingDelimiter Orange
-highlight! link markdownUrl Purple
-highlight! link markdownUrlTitleDelimiter Green
+highlight! link markdownHeadingDelimiter MiningboxOrange
+highlight! link markdownUrl MiningboxPurple
+highlight! link markdownUrlTitleDelimiter MiningboxGreen
 
 call s:HL('markdownLinkText', s:gray, s:none, s:underline)
-highlight! link markdownIdDeclaration markdownLinkText
+highlight! link markdownIdDeclaration MiningboxmarkdownLinkText
 
 " }}}
 
 " json: {{{
 
-highlight! link jsonKeyword Green
-highlight! link jsonQuote Green
-highlight! link jsonBraces Fg1
-highlight! link jsonString Fg1
+highlight! link jsonKeyword MiningboxGreen
+highlight! link jsonQuote MiningboxGreen
+highlight! link jsonBraces MiningboxFg1
+highlight! link jsonString MiningboxFg1
 
 " }}}
 
 " rust: {{{
 
-highlight! link rustSigil Orange
-highlight! link rustEscape Aqua
-highlight! link rustStringContinuation Aqua
-highlight! link rustEnum Aqua
-highlight! link rustStructure Aqua
-highlight! link rustModPathSep Fg2
-highlight! link rustCommentLineDoc Comment
-highlight! link rustDefault Aqua
+highlight! link rustSigil MiningboxOrange
+highlight! link rustEscape MiningboxAqua
+highlight! link rustStringContinuation MiningboxAqua
+highlight! link rustEnum MiningboxAqua
+highlight! link rustStructure MiningboxAqua
+highlight! link rustModPathSep MiningboxFg2
+highlight! link rustCommentLineDoc MiningboxComment
+highlight! link rustDefault MiningboxAqua
 
 " }}}
 
