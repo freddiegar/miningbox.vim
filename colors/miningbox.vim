@@ -551,10 +551,10 @@ highlight! link SyntasticError MiningboxRedUnderline
 highlight! link SyntasticWarning MiningboxYellowUnderline
 
 " Syntastic sign with same color of theme
-highlight! link SyntasticErrorSign SignColumn
-highlight! link SyntasticWarningSign SignColumn
-highlight! link SyntasticStyleErrorSign SignColumn
-highlight! link SyntasticStyleWarningSign SignColumn
+call s:HL('SyntasticErrorSign', s:colors.bg4, s:sign_column)
+call s:HL('SyntasticWarningSign', s:colors.bg4, s:sign_column)
+call s:HL('SyntasticStyleErrorSign', s:colors.bg4, s:sign_column)
+call s:HL('SyntasticStyleWarningSign', s:colors.bg4, s:sign_column)
 
 " Sintastic line highlight
 highlight! clear ErrorText
@@ -584,7 +584,6 @@ let g:fzf_colors = {
             \ 'spinner': ['fg', 'Yellow'],
             \ 'header':  ['fg', 'Bg3']
             \ }
-
 
 call s:HL('Fzf1', s:colors.blue, s:colors.bg1)
 call s:HL('Fzf2', s:colors.orange, s:colors.bg1)
@@ -638,7 +637,6 @@ highlight! link CocInfoHighlight MiningboxBlueUnderline
 highlight! link CocHintHighlight MiningboxAquaUnderline
 
 " }}}
-
 
 " Filetype specific -----------------------------------------------------------
 
@@ -904,9 +902,7 @@ highlight! link rustDefault MiningboxAqua
 highlight! Normal guibg=NONE ctermbg=NONE
 highlight! LineNr guibg=NONE ctermbg=NONE
 
-" SignColumn and StatusLine with same color of theme
-highlight! link SignColumn LineNr
-highlight! link StatusLine LineNr
+" End of buffer with same color of theme
 highlight! link EndOfBuffer LineNr
 
 " Extend cursorline format to cursorline number
