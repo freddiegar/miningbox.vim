@@ -345,11 +345,11 @@ call s:HL('MiningboxOrangeUnderline', s:none, s:none, s:undercurl, s:colors.oran
 
 " General UI: {{{
 
-" Normal text
+" Normal text (Need color, in the end it's removed)
 call s:HL('Normal', s:colors.fg1, s:colors.bg0)
 
 " Screen line that the cursor is
-call s:HL('CursorLine',   s:none, s:colors.bg1)
+call s:HL('CursorLine', s:none, s:colors.bg1)
 " Screen column that the cursor is
 highlight! link CursorColumn CursorLine
 
@@ -370,7 +370,7 @@ call s:HL('ColorColumn',  s:none, s:color_column)
 call s:HL('Conceal', s:colors.blue, s:none)
 
 " Line number of CursorLine
-call s:HL('CursorLineNr', s:colors.yellow, s:colors.bg1)
+call s:HL('CursorLineNr', s:colors.bg4, s:none, s:inverse)
 
 highlight! NonText ctermfg=238 guifg=#2E2E2E
 highlight! SpecialKey ctermfg=238 guifg=#2E2E2E
@@ -900,13 +900,8 @@ highlight! link rustDefault MiningboxAqua
 
 " Transparency
 highlight! Normal guibg=NONE ctermbg=NONE
-highlight! LineNr guibg=NONE ctermbg=NONE
 
 " End of buffer with same color of theme
 highlight! link EndOfBuffer LineNr
-
-" Extend cursorline format to cursorline number
-highlight! link CursorLineNr CursorLine
-highlight! CursorLineNr guibg=NONE ctermbg=NONE
 
 " }}}
