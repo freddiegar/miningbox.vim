@@ -571,18 +571,18 @@ highlight! User1 guifg=#FF2222 ctermfg=1
 " FZF: {{{
 
 let g:fzf_colors = {
-            \ 'fg':      ['fg', 'Fg1'],
-            \ 'bg':      ['fg', 'Bg0'],
-            \ 'hl':      ['fg', 'Yellow'],
-            \ 'fg+':     ['fg', 'Fg1'],
-            \ 'bg+':     ['fg', 'Bg1'],
-            \ 'hl+':     ['fg', 'Yellow'],
-            \ 'info':    ['fg', 'Blue'],
-            \ 'prompt':  ['fg', 'Fg4'],
-            \ 'pointer': ['fg', 'Blue'],
-            \ 'marker':  ['fg', 'Orange'],
-            \ 'spinner': ['fg', 'Yellow'],
-            \ 'header':  ['fg', 'Bg3']
+            \ 'fg':      ['fg', 'MiningboxFg1'],
+            \ 'bg':      ['fg', 'MiningboxBg0'],
+            \ 'hl':      ['fg', 'MiningboxYellow'],
+            \ 'fg+':     ['fg', 'MiningboxFg1'],
+            \ 'bg+':     ['fg', 'MiningboxBg1'],
+            \ 'hl+':     ['fg', 'MiningboxYellow'],
+            \ 'info':    ['fg', 'MiningboxBlue'],
+            \ 'prompt':  ['fg', 'MiningboxFg4'],
+            \ 'pointer': ['fg', 'MiningboxBlue'],
+            \ 'marker':  ['fg', 'MiningboxOrange'],
+            \ 'spinner': ['fg', 'MiningboxYellow'],
+            \ 'header':  ['fg', 'MiningboxBg3']
             \ }
 
 call s:HL('Fzf1', s:colors.blue, s:colors.bg1)
