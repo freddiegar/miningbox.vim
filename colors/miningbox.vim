@@ -385,7 +385,7 @@ call s:HL('QuickFixLine', s:colors.bg0, s:colors.yellow, s:bold)
 call s:HL('Underlined', s:colors.blue, s:none, s:underline)
 
 call s:HL('StatusLine',   s:colors.bg2, s:colors.fg1, s:inverse)
-call s:HL('StatusLineNC', s:colors.bg1, s:colors.fg4, s:inverse)
+call s:HL('StatusLineNC', s:colors.bg1, s:none, s:inverse)
 
 " The column separating vertically split windows
 call s:HL('VertSplit', s:colors.bg3, s:vert_split)
@@ -608,7 +608,6 @@ highlight! link netrwVersion MiningboxGreen
 " Goyo: {{{
 
 highlight! link VertSplit LineNr
-highlight! StatusLineNC guibg=NONE ctermbg=NONE
 
 " }}}
 
