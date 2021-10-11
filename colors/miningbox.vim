@@ -350,6 +350,8 @@ call s:HL('Normal', s:colors.fg1, s:colors.bg0)
 
 " Screen line that the cursor is
 call s:HL('CursorLine', s:none, s:colors.bg1)
+" Screen line number of cursor is
+call s:HL('CursorLineNr', (&cursorline ? s:colors.bg1 : s:none), (&cursorline ? s:none : s:colors.bg1))
 " Screen column that the cursor is
 highlight! link CursorColumn CursorLine
 
@@ -368,9 +370,6 @@ call s:HL('ColorColumn',  s:none, s:color_column)
 
 " Concealed element: \lambda → λ
 call s:HL('Conceal', s:colors.blue, s:none)
-
-" Line number of CursorLine
-call s:HL('CursorLineNr', s:colors.bg4, s:none, s:inverse)
 
 highlight! NonText ctermfg=238 guifg=#2E2E2E
 highlight! SpecialKey ctermfg=238 guifg=#2E2E2E
