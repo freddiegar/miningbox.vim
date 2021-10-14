@@ -1,6 +1,6 @@
 " -----------------------------------------------------------------------------
-" File: plugin/miningbox.vim
-" Author: Freddie Gar <freddie.garNOSPAM@outlook.com>
+" File:     plugin/miningbox.vim
+" Author:   Freddie Gar
 " -----------------------------------------------------------------------------
 
 if exists('g:loaded_miningbox')

@@ -1,9 +1,9 @@
 " -----------------------------------------------------------------------------
-" File: miningbox.vim
-" Description: Dark colorscheme based in Gruvbox (Fantastic!) colorscheme
-" Author: Freddie Gar <freddie.garNOSPAM@outlook.com>
-" Source: https://github.com/freddiegar/miningbox
-" Thanks: https://github.com/gruvbox-community/gruvbox
+" File:         miningbox.vim
+" Description:  Dark colorscheme based in Gruvbox (Fantastic!) colorscheme
+" Author:       Freddie Gar
+" Source:       https://github.com/freddiegar/miningbox
+" Thanks:       https://github.com/gruvbox-community/gruvbox
 " -----------------------------------------------------------------------------
 
 highlight clear
