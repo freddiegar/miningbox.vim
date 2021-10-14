@@ -550,20 +550,13 @@ highlight! link SyntasticError MiningboxRedUnderline
 highlight! link SyntasticWarning MiningboxYellowUnderline
 
 " Syntastic sign with same color of theme
-call s:HL('SyntasticErrorSign', s:colors.bg4, s:sign_column)
-call s:HL('SyntasticWarningSign', s:colors.bg4, s:sign_column)
-call s:HL('SyntasticStyleErrorSign', s:colors.bg4, s:sign_column)
-call s:HL('SyntasticStyleWarningSign', s:colors.bg4, s:sign_column)
+call s:HL('SyntasticErrorSign', s:none, s:colors.neutral_red)
+call s:HL('SyntasticWarningSign', s:none, s:colors.neutral_red)
+call s:HL('SyntasticStyleErrorSign', s:none, s:colors.neutral_yellow)
+call s:HL('SyntasticStyleWarningSign', s:none, s:colors.neutral_yellow)
 
-" Sintastic line highlight
-highlight! clear ErrorText
-highlight! clear ErrorLine
-highlight! ErrorLine guifg=NONE ctermbg=52 guibg=#55393D ctermbg=NONE
-highlight! link SyntasticStyleErrorLine ErrorLine
-highlight! SyntasticStyleWarningLine guifg=NONE ctermbg=236 guibg=#534C38 ctermbg=NONE
-
-" Custom color for statusline
-highlight! User1 guifg=#FF2222 ctermfg=1
+" Syntastic custom color in statusline
+call s:HL('User1', s:none, s:colors.neutral_red)
 
 " }}}
 
