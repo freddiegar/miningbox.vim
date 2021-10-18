@@ -351,7 +351,7 @@ call s:HL('Normal', s:colors.fg1, s:colors.bg0)
 " Screen line that the cursor is
 call s:HL('CursorLine', s:none, s:colors.bg1)
 " Screen line number of cursor is
-call s:HL('CursorLineNr', (&cursorline ? s:colors.bg1 : s:none), (&cursorline ? s:none : s:colors.bg1))
+call s:HL('CursorLineNr', (&cursorline ? s:colors.bg1 : s:none), (&cursorline ? s:none : s:colors.bg1), (&cursorline ? s:inverse : ''))
 " Screen column that the cursor is
 highlight! link CursorColumn CursorLine
 
