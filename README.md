@@ -57,11 +57,11 @@ colorscheme miningbox
 
 ### Palette
 
-![Palette](https://raw.githubusercontent.com/wiki/freddiegar/miningbox.vim/images/palette.png)
+![Palette](https://github.com/freddiegar/miningbox.vim/blob/develop/images/palette.png)
 
 ### Preview
 
-![Screenshot](https://raw.githubusercontent.com/wiki/freddiegar/miningbox.vim/images/screenshot.png)
+![Screenshot](https://github.com/freddiegar/miningbox.vim/blob/develop/images/screenshot.png)
 
 ## License
 
