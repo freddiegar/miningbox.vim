@@ -19,7 +19,14 @@ colorscheme miningbox
 ```
 > Vim: 8
 
-## Plugins
+## Features
+
+- Transparency
+    - Normal Mode
+    - Terminal
+    - Statusline
+
+### Plugins
 
 - [coc.nvim](https://github.com/neoclide/coc.nvim/)
 - [fzf](https://github.com/junegunn/fzf.vim)
@@ -31,7 +38,7 @@ colorscheme miningbox
 - [syntastic](https://github.com/vim-syntastic/syntastic)
 - [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 
-## Filetypes
+### Filetypes
 
 - c
 - css
@@ -47,6 +54,14 @@ colorscheme miningbox
 - typescript
 - vim
 - xml
+
+### Palette
+
+![Palette](https://raw.githubusercontent.com/wiki/freddiegar/miningbox.vim/images/palette.png)
+
+### Preview
+
+![Screenshot](https://raw.githubusercontent.com/wiki/freddiegar/miningbox.vim/images/screenshot.png)
 
 ## License
 
