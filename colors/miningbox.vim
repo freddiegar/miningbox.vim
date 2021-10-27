@@ -111,11 +111,11 @@ let s:vim_bg = ['bg', 'bg']
 let s:vim_fg = ['fg', 'fg']
 let s:none = ['NONE', 'NONE']
 
-let s:bg0  = s:colors.dark0
-let s:bg1  = s:colors.dark1
-let s:bg2  = s:colors.dark2
-let s:bg3  = s:colors.dark3
-let s:bg4  = s:colors.dark4
+let s:bg0 = s:colors.dark0
+let s:bg1 = s:colors.dark1
+let s:bg2 = s:colors.dark2
+let s:bg3 = s:colors.dark3
+let s:bg4 = s:colors.dark4
 
 let s:gray = s:colors.gray_245
 
@@ -366,7 +366,7 @@ highlight! link TabLine TabLineFill
 call s:HL('MatchParen', s:none, s:colors.bg3, s:bold)
 
 " Highlighted screen columns
-call s:HL('ColorColumn',  s:none, s:color_column)
+call s:HL('ColorColumn', s:none, s:color_column)
 
 " Concealed element: \lambda → λ
 call s:HL('Conceal', s:colors.blue, s:none)
@@ -374,7 +374,7 @@ call s:HL('Conceal', s:colors.blue, s:none)
 highlight! NonText ctermfg=238 guifg=#2E2E2E
 highlight! SpecialKey ctermfg=238 guifg=#2E2E2E
 
-call s:HL('Visual',    s:none,  s:colors.bg3, s:invert_selection)
+call s:HL('Visual', s:none, s:colors.bg3, s:invert_selection)
 highlight! link VisualNOS Visual
 
 call s:HL('Search', s:hls_highlight, s:colors.bg0, s:inverse)
@@ -384,8 +384,8 @@ call s:HL('QuickFixLine', s:colors.bg0, s:colors.yellow, s:bold)
 
 call s:HL('Underlined', s:colors.blue, s:none, s:underline)
 
-call s:HL('StatusLine',   s:colors.bg2, s:colors.fg1, s:inverse)
-call s:HL('StatusLineNC', s:colors.bg1, s:none, s:inverse)
+call s:HL('StatusLine', s:colors.bg4, s:none)
+call s:HL('StatusLineNC', s:colors.bg4, s:none, 'italic,')
 
 " The column separating vertically split windows
 call s:HL('VertSplit', s:colors.bg3, s:vert_split)
@@ -400,7 +400,7 @@ highlight! link Directory MiningboxGreenBold
 highlight! link Title MiningboxGreenBold
 
 " Error messages on the command line
-call s:HL('ErrorMsg',   s:colors.bg0, s:colors.red, s:bold)
+call s:HL('ErrorMsg', s:colors.bg0, s:colors.red, s:bold)
 " More prompt: -- More --
 highlight! link MoreMsg MiningboxYellowBold
 " Current mode message: -- INSERT --
@@ -482,7 +482,7 @@ highlight! link Constant MiningboxPurple
 " Character constant: 'c', '/n'
 highlight! link Character MiningboxPurple
 " String constant: "this is a string"
-call s:HL('String',  s:colors.green, s:none, s:italic)
+call s:HL('String', s:colors.green, s:none, s:italic)
 " Boolean constant: TRUE, false
 highlight! link Boolean MiningboxPurple
 " Number constant: 234, 0xff
@@ -498,6 +498,14 @@ highlight! link StorageClass MiningboxOrange
 highlight! link Structure MiningboxAqua
 " typedef
 highlight! link Typedef MiningboxYellow
+
+" }}}
+
+" Terminal: {{{
+
+call s:HL('Terminal', s:none, s:colors.bg0)
+call s:HL('StatusLineTerm', s:colors.bg4, s:none)
+call s:HL('StatusLineTermNC', s:colors.bg4, s:none, 'italic,')
 
 " }}}
 
