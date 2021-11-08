@@ -49,6 +49,7 @@ colorscheme miningbox
 - json
 - lua
 - markdown
+- php
 - python
 - rust
 - typescript
