@@ -25,6 +25,7 @@ colorscheme miningbox
     - Normal Mode
     - Terminal
     - Statusline
+- Show extra white spaces as error
 
 ### Plugins
 
