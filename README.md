@@ -25,6 +25,7 @@ colorscheme miningbox
     - Normal Mode
     - Terminal
     - Statusline
+- Show extra white spaces as error
 
 ### Plugins
 
@@ -49,6 +50,7 @@ colorscheme miningbox
 - json
 - lua
 - markdown
+- php
 - python
 - rust
 - typescript
