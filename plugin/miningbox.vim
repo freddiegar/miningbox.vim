@@ -89,4 +89,10 @@ if exists(':Goyo')
         autocmd User GoyoEnter nested call <SID>goyo_enter()
         autocmd User GoyoLeave nested call <SID>goyo_leave()
     augroup END
+
+    augroup miningboxJson
+        autocmd!
+
+        autocmd FileType json syntax match Comment +\/\/.\+$+
+    augroup END
 endif
