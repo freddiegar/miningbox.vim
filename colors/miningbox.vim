@@ -568,6 +568,17 @@ call s:HL('User1', s:none, s:colors.neutral_red)
 
 " }}}
 
+" ALE: {{{
+
+highlight! link ALEError MiningboxRedUnderline
+highlight! link ALEWarning MiningboxYellowUnderline
+
+" ALE sign with same color of theme
+call s:HL('ALEErrorSign', s:none, s:colors.neutral_red)
+call s:HL('ALEWarningSign', s:none, s:colors.neutral_red)
+
+" }}}
+
 " FZF: {{{
 
 let g:fzf_colors = {
