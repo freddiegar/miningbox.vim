@@ -24,7 +24,6 @@ endif
 
 if exists(':Goyo')
     let s:initial = {}
-    let s:hasgui = has('gui_running')
 
     " ========================================================
     " Goyo Integration (+Limelight)
@@ -53,20 +52,12 @@ if exists(':Goyo')
     endfunction
 
     function! s:goyo_enter() abort
-        if s:hasgui
-            let s:initial['fullscreen'] = &fullscreen
-        endif
-
         let s:initial['scrolloff'] = &scrolloff
         let s:initial['fillchars'] = &fillchars
         let s:initial['cursorline'] = &cursorline
         let s:initial['cursorcolumn'] = &cursorcolumn
         let s:initial['list'] = &list
         let s:initial['relativenumber'] = &relativenumber
-
-        if s:hasgui && !&fullscreen
-            set fullscreen
-        endif
 
         set scrolloff=999                       " Center cursor in screen
         set fillchars+=eob:\                    " Hide ~ in end of buffer
@@ -84,10 +75,6 @@ if exists(':Goyo')
     endfunction
 
     function! s:goyo_leave() abort
-        if s:hasgui && !s:initial['fullscreen']
-            set nofullscreen
-        endif
-
         silent execute 'let &scrolloff = ' . s:initial['scrolloff']
         silent execute 'let &fillchars = "' . s:initial['fillchars'] . '"'
         silent execute 'let &list = ' . s:initial['list']

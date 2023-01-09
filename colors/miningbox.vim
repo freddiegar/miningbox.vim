@@ -6,6 +6,8 @@
 " Thanks:       https://github.com/gruvbox-community/gruvbox
 " -----------------------------------------------------------------------------
 
+set background=dark
+
 highlight clear
 
 if exists('syntax_on')
@@ -387,9 +389,6 @@ call s:HL('Underlined', s:colors.blue, s:none, s:underline)
 call s:HL('StatusLine', s:colors.bg4, s:none)
 call s:HL('StatusLineNC', s:colors.bg4, s:none, 'italic,')
 
-" The column separating vertically split windows
-call s:HL('VertSplit', s:colors.bg3, s:vert_split)
-
 " Current match in wildmenu completion
 call s:HL('WildMenu', s:colors.blue, s:colors.bg2, s:bold)
 
@@ -563,7 +562,7 @@ call s:HL('SyntasticWarningSign', s:none, s:colors.neutral_red)
 call s:HL('SyntasticStyleErrorSign', s:none, s:colors.neutral_yellow)
 call s:HL('SyntasticStyleWarningSign', s:none, s:colors.neutral_yellow)
 
-" Syntastic custom color in statusline
+" Custom color #1 in statusline
 call s:HL('User1', s:none, s:colors.neutral_red)
 
 " }}}
@@ -909,7 +908,15 @@ highlight! link rustDefault MiningboxAqua
 " Custom specific: {{{
 
 " Transparency
-highlight! Normal guibg=NONE ctermbg=NONE
+if !has('gui_running')
+    highlight! Normal guibg=NONE ctermbg=NONE
+endif
+
+" GitGutter sign column
+highlight! link CursorLineSign LineNr
+
+" The column separating vertically split windows
+highlight! link VertSplit LineNr
 
 " End of buffer with same color of theme
 highlight! link EndOfBuffer LineNr
