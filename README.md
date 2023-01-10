@@ -38,7 +38,7 @@ colorscheme miningbox
 - [netrw](https://www.vim.org/scripts/script.php?script_id=1075)
 - [sneak](https://github.com/justinmk/vim-sneak)
 - [syntastic](https://github.com/vim-syntastic/syntastic) @unmanteined
-- [ale](https://github.com/dense-analysis/ale)
+- [vim-signature](https://github.com/kshenoy/vim-signature)
 - [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 
 ### Filetypes

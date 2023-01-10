@@ -542,6 +542,13 @@ highlight! link SneakScope DiffAdd
 
 " }}}
 
+" Signature: {{{
+
+call s:HL('SignatureMarkText', s:colors.bg4, s:sign_column)
+call s:HL('SignatureMarkerText', s:colors.bg4, s:sign_column)
+
+" }}}
+
 " GitGutter: {{{
 
 call s:HL('GitGutterAdd', s:colors.bg4, s:sign_column)
