@@ -25,7 +25,8 @@ colorscheme miningbox
     - Normal Mode
     - Terminal
     - Statusline
-- Show extra white spaces (aka: lead) as Error
+- Show extra white spaces (aka: tail) as Error
+- Show no-break space (aka: char 160) as Warning
 - GUI Support
 
 ### Plugins

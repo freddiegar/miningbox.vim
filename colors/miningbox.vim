@@ -444,6 +444,7 @@ highlight! link Special MiningboxOrange
 call s:HL('Comment', s:colors.gray, s:none, s:italic)
 call s:HL('Todo', s:vim_fg, s:none, s:bold . s:italic)
 call s:HL('Error', s:colors.red, s:none, s:bold . s:inverse)
+call s:HL('Warning', s:colors.orange, s:none, s:bold . s:inverse)
 
 " Generic statement
 highlight! link Statement MiningboxRed
@@ -586,6 +587,26 @@ call s:HL('ALEWarningSign', s:none, s:colors.neutral_red)
 " }}}
 
 " FZF: {{{
+" Usage: 'bg+': ['bg', 'CursorLine', 'CursorColumn', ...]
+"          │       │          │           │
+"          │       │          │           ╰─ if not set fallback CursorLine, so on so far
+"          │       │          ╰─ first try use CursorLine
+"          │       ╰─ highlight
+"          ╰─ item
+
+" Example:
+"                       ╭ hl
+"   marker ─╮         ╭────╮
+"        │  >[4]     p[ermi]ssions.md <- fg (letters) <- bg (background)            │                │ │
+"        │ > [3] #   [ermi]ne.md (cursorline) <- fg+ (letters) <- bg+ (background)  │    Preview     │ │
+"        │ │         ╰────╯                                                         │                │ │
+"  pointer ╯            ╰ hl+                                                       │     window     │ │
+"    header   ╮                                                                     │                │ │
+"        │   ╭─╮                                                                    │                │ │
+"        │   [2] %   .vimrc                                                         │                │ │
+"    info -> 2/2 ───────────────────────────────────────────────────────────────────│                │ │
+" prompt -> Buf> ermi                                                               ╰────────────────╯ │
+"        ╰─────────────────────────────────────────────────────────────────────────────────────────────╯
 
 let g:fzf_colors = {
             \ 'fg':      ['fg', 'MiningboxFg1'],
@@ -602,6 +623,7 @@ let g:fzf_colors = {
             \ 'header':  ['fg', 'MiningboxBg3']
             \ }
 
+" Fzf statusline
 call s:HL('Fzf1', s:colors.blue, s:colors.bg1)
 call s:HL('Fzf2', s:colors.orange, s:colors.bg1)
 call s:HL('Fzf3', s:colors.fg4, s:colors.bg1)
@@ -931,5 +953,6 @@ highlight! link EndOfBuffer LineNr
 " Unwanted spaces
 " @see syntax/syncolor.vim
 highlight! link ExtraWhitespace Error
+highlight! link WeirdWhitespace Warning
 
 " }}}
