@@ -23,6 +23,8 @@ if exists(':Limelight')
 endif
 
 if exists(':Goyo')
+    let s:initial = {}
+
     " ========================================================
     " Goyo Integration (+Limelight)
     " @see https://github.com/junegunn/goyo.vim
@@ -36,12 +38,12 @@ if exists(':Goyo')
 
         autocmd QuitPre <buffer> let b:quitting = 1
 
-        cabbrev <buffer> q! silent let b:quitting_bang = 1 <bar> q!
+        cabbrev <buffer> q! silent let b:quitting_bang = 1 <Bar> q!
     endfunction
 
     function! s:goyo_leave_quit() abort
-        if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-            if b:quitting_bang
+        if get(b:, 'quitting', 0) && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) ==# 1
+            if get(b:, 'quitting_bang', 0)
                 qall!
             else
                 qall
@@ -50,14 +52,20 @@ if exists(':Goyo')
     endfunction
 
     function! s:goyo_enter() abort
-        if has('gui_running')
-            set fullscreen
-        endif
+        let s:initial['scrolloff'] = &scrolloff
+        let s:initial['fillchars'] = &fillchars
+        let s:initial['cursorline'] = &cursorline
+        let s:initial['cursorcolumn'] = &cursorcolumn
+        let s:initial['list'] = &list
+        let s:initial['relativenumber'] = &relativenumber
 
         set scrolloff=999                       " Center cursor in screen
-        set cursorline                          " Highlitght cursor
-        set nolist                              " No space, tabs chars
         set fillchars+=eob:\                    " Hide ~ in end of buffer
+
+        set nolist                              " No space, tabs chars
+        set norelativenumber                    " Show numbers
+        set cursorline                          " Highlight row
+        set cursorcolumn                        " Highlight column
 
         if exists(':Limelight')
             Limelight
@@ -67,14 +75,12 @@ if exists(':Goyo')
     endfunction
 
     function! s:goyo_leave() abort
-        if has('gui_running')
-            set nofullscreen
-        endif
-
-        set scrolloff&
-        set cursorline&
-        set list&
-        set fillchars&
+        silent execute 'let &scrolloff = ' . s:initial['scrolloff']
+        silent execute 'let &fillchars = "' . s:initial['fillchars'] . '"'
+        silent execute 'let &list = ' . s:initial['list']
+        silent execute 'let &relativenumber = ' . s:initial['relativenumber']
+        silent execute 'let &cursorline = ' . s:initial['cursorline']
+        silent execute 'let &cursorcolumn = ' . s:initial['cursorcolumn']
 
         if exists(':Limelight')
             Limelight!

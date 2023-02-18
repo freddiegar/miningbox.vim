@@ -6,6 +6,8 @@
 " Thanks:       https://github.com/gruvbox-community/gruvbox
 " -----------------------------------------------------------------------------
 
+set background=dark
+
 highlight clear
 
 if exists('syntax_on')
@@ -387,9 +389,6 @@ call s:HL('Underlined', s:colors.blue, s:none, s:underline)
 call s:HL('StatusLine', s:colors.bg4, s:none)
 call s:HL('StatusLineNC', s:colors.bg4, s:none, 'italic,')
 
-" The column separating vertically split windows
-call s:HL('VertSplit', s:colors.bg3, s:vert_split)
-
 " Current match in wildmenu completion
 call s:HL('WildMenu', s:colors.blue, s:colors.bg2, s:bold)
 
@@ -409,10 +408,6 @@ highlight! link ModeMsg MiningboxYellowBold
 highlight! link Question MiningboxOrangeBold
 " Warning messages
 highlight! link WarningMsg MiningboxRedBold
-
-" }}}
-
-" Gutter: {{{
 
 " Line number for :number and :# commands
 call s:HL('LineNr', s:colors.bg4, s:number_column)
@@ -445,6 +440,7 @@ highlight! link Special MiningboxOrange
 call s:HL('Comment', s:colors.gray, s:none, s:italic)
 call s:HL('Todo', s:vim_fg, s:none, s:bold . s:italic)
 call s:HL('Error', s:colors.red, s:none, s:bold . s:inverse)
+call s:HL('Warning', s:colors.orange, s:none, s:bold . s:inverse)
 
 " Generic statement
 highlight! link Statement MiningboxRed
@@ -535,11 +531,16 @@ call s:HL('DiffText',   s:colors.yellow, s:colors.bg0, s:inverse)
 
 " Plugin specific -------------------------------------------------------------
 
-" Sneak: {{{
+" Goyo: {{{
 
-highlight! link Sneak Cursor
-highlight! link SneakLabel Cursor
-highlight! link SneakScope DiffAdd
+highlight! link VertSplit LineNr
+
+" }}}
+
+" Signature: {{{
+
+call s:HL('SignatureMarkText', s:colors.bg4, s:sign_column)
+call s:HL('SignatureMarkerText', s:colors.bg4, s:sign_column)
 
 " }}}
 
@@ -552,23 +553,41 @@ call s:HL('GitGutterChangeDelete', s:colors.bg4, s:sign_column)
 
 " }}}
 
-" Syntastic: {{{
+" ALE: {{{
 
-highlight! link SyntasticError MiningboxRedUnderline
-highlight! link SyntasticWarning MiningboxYellowUnderline
+highlight! link ALEError MiningboxRedUnderline
+highlight! link ALEWarning MiningboxYellowUnderline
 
-" Syntastic sign with same color of theme
-call s:HL('SyntasticErrorSign', s:none, s:colors.neutral_red)
-call s:HL('SyntasticWarningSign', s:none, s:colors.neutral_red)
-call s:HL('SyntasticStyleErrorSign', s:none, s:colors.neutral_yellow)
-call s:HL('SyntasticStyleWarningSign', s:none, s:colors.neutral_yellow)
+" ALE sign with same color of theme
+call s:HL('ALEErrorSign', s:none, s:colors.neutral_red)
+call s:HL('ALEWarningSign', s:none, s:colors.neutral_red)
 
-" Syntastic custom color in statusline
+" Custom color #1 in statusline
 call s:HL('User1', s:none, s:colors.neutral_red)
 
 " }}}
 
 " FZF: {{{
+" Usage: 'bg+': ['bg', 'CursorLine', 'CursorColumn', ...]
+"          │       │          │           │
+"          │       │          │           ╰─ if not set fallback CursorLine, so on so far
+"          │       │          ╰─ first try use CursorLine
+"          │       ╰─ highlight
+"          ╰─ item
+
+" Example:
+"                       ╭ hl
+"   marker ─╮         ╭────╮
+"        │  >[4]     p[ermi]ssions.md <- fg (letters) <- bg (background)            │                │ │
+"        │ > [3] #   [ermi]ne.md (cursorline) <- fg+ (letters) <- bg+ (background)  │    Preview     │ │
+"        │ │         ╰────╯                                                         │                │ │
+"  pointer ╯            ╰ hl+                                                       │     window     │ │
+"    header   ╮                                                                     │                │ │
+"        │   ╭─╮                                                                    │                │ │
+"        │   [2] %   .vimrc                                                         │                │ │
+"    info -> 2/2 ───────────────────────────────────────────────────────────────────│                │ │
+" prompt -> Buf> ermi                                                               ╰────────────────╯ │
+"        ╰─────────────────────────────────────────────────────────────────────────────────────────────╯
 
 let g:fzf_colors = {
             \ 'fg':      ['fg', 'MiningboxFg1'],
@@ -585,6 +604,7 @@ let g:fzf_colors = {
             \ 'header':  ['fg', 'MiningboxBg3']
             \ }
 
+" Fzf statusline
 call s:HL('Fzf1', s:colors.blue, s:colors.bg1)
 call s:HL('Fzf2', s:colors.orange, s:colors.bg1)
 call s:HL('Fzf3', s:colors.fg4, s:colors.bg1)
@@ -606,37 +626,6 @@ highlight! link netrwVersion MiningboxGreen
 
 " }}}
 
-" Goyo: {{{
-
-highlight! link VertSplit LineNr
-
-" }}}
-
-" coc.nvim: {{{
-
-highlight! link CocErrorSign MiningboxRedSign
-highlight! link CocWarningSign MiningboxOrangeSign
-highlight! link CocInfoSign MiningboxBlueSign
-highlight! link CocHintSign MiningboxAquaSign
-highlight! link CocErrorFloat MiningboxRed
-highlight! link CocWarningFloat MiningboxOrange
-highlight! link CocInfoFloat MiningboxBlue
-highlight! link CocHintFloat MiningboxAqua
-highlight! link CocDiagnosticsError MiningboxRed
-highlight! link CocDiagnosticsWarning MiningboxOrange
-highlight! link CocDiagnosticsInfo MiningboxBlue
-highlight! link CocDiagnosticsHint MiningboxAqua
-
-highlight! link CocSelectedText MiningboxRed
-highlight! link CocCodeLens MiningboxGray
-
-highlight! link CocErrorHighlight MiningboxRedUnderline
-highlight! link CocWarningHighlight MiningboxOrangeUnderline
-highlight! link CocInfoHighlight MiningboxBlueUnderline
-highlight! link CocHintHighlight MiningboxAquaUnderline
-
-" }}}
-
 " Filetype specific -----------------------------------------------------------
 
 " diff: {{{
@@ -652,253 +641,18 @@ highlight! link diffLine MiningboxBlue
 
 " }}}
 
-" html: {{{
-
-highlight! link htmlTag MiningboxAquaBold
-highlight! link htmlEndTag MiningboxAquaBold
-
-highlight! link htmlTagName MiningboxBlue
-highlight! link htmlArg MiningboxOrange
-
-highlight! link htmlTagN MiningboxFg1
-highlight! link htmlSpecialTagName MiningboxBlue
-
-call s:HL('htmlLink', s:colors.fg4, s:none, s:underline)
-
-highlight! link htmlSpecialChar MiningboxRed
-
-call s:HL('htmlBold', s:vim_fg, s:vim_bg, s:bold)
-call s:HL('htmlBoldUnderline', s:vim_fg, s:vim_bg, s:bold . s:underline)
-call s:HL('htmlBoldItalic', s:vim_fg, s:vim_bg, s:bold . s:italic)
-call s:HL('htmlBoldUnderlineItalic', s:vim_fg, s:vim_bg, s:bold . s:underline . s:italic)
-
-call s:HL('htmlUnderline', s:vim_fg, s:vim_bg, s:underline)
-call s:HL('htmlUnderlineItalic', s:vim_fg, s:vim_bg, s:underline . s:italic)
-call s:HL('htmlItalic', s:vim_fg, s:vim_bg, s:italic)
-
-" }}}
-
-" xml: {{{
-
-highlight! link xmlTag MiningboxAquaBold
-highlight! link xmlEndTag MiningboxAquaBold
-highlight! link xmlTagName MiningboxBlue
-highlight! link xmlEqual MiningboxBlue
-highlight! link docbkKeyword MiningboxAquaBold
-
-highlight! link xmlDocTypeDecl MiningboxGray
-highlight! link xmlDocTypeKeyword MiningboxPurple
-highlight! link xmlCdataStart MiningboxGray
-highlight! link xmlCdataCdata MiningboxPurple
-highlight! link dtdFunction MiningboxGray
-highlight! link dtdTagName MiningboxPurple
-
-highlight! link xmlAttrib MiningboxOrange
-highlight! link xmlProcessingDelim MiningboxGray
-highlight! link dtdParamEntityPunct MiningboxGray
-highlight! link dtdParamEntityDPunct MiningboxGray
-highlight! link xmlAttribPunct MiningboxGray
-
-highlight! link xmlEntity MiningboxRed
-highlight! link xmlEntityPunct MiningboxRed
-
-" }}}
-
-" vim: {{{
-
-call s:HL('vimCommentTitle', s:colors.light, s:none, s:bold . s:italic)
-
-highlight! link vimNotation MiningboxOrange
-highlight! link vimBracket MiningboxOrange
-highlight! link vimMapModKey MiningboxOrange
-highlight! link vimFuncSID MiningboxFg3
-highlight! link vimSetSep MiningboxFg3
-highlight! link vimSep MiningboxFg3
-highlight! link vimContinue MiningboxFg3
-
-" }}}
-
-" c: {{{
-
-highlight! link cOperator MiningboxPurple
-highlight! link cppOperator MiningboxPurple
-highlight! link cStructure MiningboxOrange
-
-" }}}
-
-" python: {{{
-
-highlight! link pythonBuiltin MiningboxOrange
-highlight! link pythonBuiltinObj MiningboxOrange
-highlight! link pythonBuiltinFunc MiningboxOrange
-highlight! link pythonFunction MiningboxAqua
-highlight! link pythonDecorator MiningboxRed
-highlight! link pythonInclude MiningboxBlue
-highlight! link pythonImport MiningboxBlue
-highlight! link pythonRun MiningboxBlue
-highlight! link pythonCoding MiningboxBlue
-highlight! link pythonOperator MiningboxRed
-highlight! link pythonException MiningboxRed
-highlight! link pythonExceptions MiningboxPurple
-highlight! link pythonBoolean MiningboxPurple
-highlight! link pythonDot MiningboxFg3
-highlight! link pythonConditional MiningboxRed
-highlight! link pythonRepeat MiningboxRed
-highlight! link pythonDottedName MiningboxGreenBold
-
-" }}}
-
-" css: {{{
-
-highlight! link cssBraces MiningboxBlue
-highlight! link cssFunctionName MiningboxYellow
-highlight! link cssIdentifier MiningboxOrange
-highlight! link cssClassName MiningboxGreen
-highlight! link cssColor MiningboxBlue
-
-highlight! link cssSelectorOp MiningboxBlue
-highlight! link cssSelectorOp2 MiningboxBlue
-highlight! link cssImportant MiningboxGreen
-highlight! link cssVendor MiningboxFg1
-highlight! link cssTextProp MiningboxAqua
-highlight! link cssAnimationProp MiningboxAqua
-highlight! link cssUIProp MiningboxYellow
-highlight! link cssTransformProp MiningboxAqua
-highlight! link cssTransitionProp MiningboxAqua
-highlight! link cssPrintProp MiningboxAqua
-highlight! link cssPositioningProp MiningboxYellow
-highlight! link cssBoxProp MiningboxAqua
-highlight! link cssFontDescriptorProp MiningboxAqua
-highlight! link cssFlexibleBoxProp MiningboxAqua
-highlight! link cssBorderOutlineProp MiningboxAqua
-highlight! link cssBackgroundProp MiningboxAqua
-highlight! link cssMarginProp MiningboxAqua
-highlight! link cssListProp MiningboxAqua
-highlight! link cssTableProp MiningboxAqua
-highlight! link cssFontProp MiningboxAqua
-highlight! link cssPaddingProp MiningboxAqua
-highlight! link cssDimensionProp MiningboxAqua
-highlight! link cssRenderProp MiningboxAqua
-highlight! link cssColorProp MiningboxAqua
-highlight! link cssGeneratedContentProp MiningboxAqua
-
-" }}}
-
-" javascript: {{{
-
-highlight! link javaScriptBraces MiningboxFg1
-highlight! link javaScriptFunction MiningboxAqua
-highlight! link javaScriptIdentifier MiningboxRed
-highlight! link javaScriptMember MiningboxBlue
-highlight! link javaScriptNumber MiningboxPurple
-highlight! link javaScriptNull MiningboxPurple
-highlight! link javaScriptParens MiningboxFg3
-
-" }}}
-
-" typescript: {{{
-
-highlight! link typescriptReserved MiningboxAqua
-highlight! link typescriptLabel MiningboxAqua
-highlight! link typescriptFuncKeyword MiningboxAqua
-highlight! link typescriptIdentifier MiningboxOrange
-highlight! link typescriptBraces MiningboxFg1
-highlight! link typescriptEndColons MiningboxFg1
-highlight! link typescriptDOMObjects MiningboxFg1
-highlight! link typescriptAjaxMethods MiningboxFg1
-highlight! link typescriptLogicSymbols MiningboxFg1
-highlight! link typescriptDocSeeTag MiningboxComment
-highlight! link typescriptDocParam MiningboxComment
-highlight! link typescriptDocTags MiningboxvimCommentTitle
-highlight! link typescriptGlobalObjects MiningboxFg1
-highlight! link typescriptParens MiningboxFg3
-highlight! link typescriptOpSymbols MiningboxFg3
-highlight! link typescriptHtmlElemProperties MiningboxFg1
-highlight! link typescriptNull MiningboxPurple
-highlight! link typescriptInterpolationDelimiter MiningboxAqua
-
-" }}}
-
-" go: {{{
-
-highlight! link goDirective MiningboxAqua
-highlight! link goConstants MiningboxPurple
-highlight! link goDeclaration MiningboxRed
-highlight! link goDeclType MiningboxBlue
-highlight! link goBuiltins MiningboxOrange
-
-" }}}
-
-" lua: {{{
-
-highlight! link luaIn MiningboxRed
-highlight! link luaFunction MiningboxAqua
-highlight! link luaTable MiningboxOrange
-
-" }}}
-
-" markdown: {{{
-
-call s:HL('markdownItalic', s:fg3, s:none, s:italic)
-call s:HL('markdownBold', s:fg3, s:none, s:bold)
-call s:HL('markdownBoldItalic', s:fg3, s:none, s:bold . s:italic)
-
-highlight! link markdownH1 MiningboxGreenBold
-highlight! link markdownH2 MiningboxGreenBold
-highlight! link markdownH3 MiningboxYellowBold
-highlight! link markdownH4 MiningboxYellowBold
-highlight! link markdownH5 MiningboxYellow
-highlight! link markdownH6 MiningboxYellow
-
-highlight! link markdownCode MiningboxAqua
-highlight! link markdownCodeBlock MiningboxAqua
-highlight! link markdownCodeDelimiter MiningboxAqua
-
-highlight! link markdownBlockquote MiningboxGray
-highlight! link markdownListMarker MiningboxGray
-highlight! link markdownOrderedListMarker MiningboxGray
-highlight! link markdownRule MiningboxGray
-highlight! link markdownHeadingRule MiningboxGray
-
-highlight! link markdownUrlDelimiter MiningboxFg3
-highlight! link markdownLinkDelimiter MiningboxFg3
-highlight! link markdownLinkTextDelimiter MiningboxFg3
-
-highlight! link markdownHeadingDelimiter MiningboxOrange
-highlight! link markdownUrl MiningboxPurple
-highlight! link markdownUrlTitleDelimiter MiningboxGreen
-
-call s:HL('markdownLinkText', s:gray, s:none, s:underline)
-highlight! link markdownIdDeclaration MiningboxmarkdownLinkText
-
-" }}}
-
-" json: {{{
-
-highlight! link jsonKeyword MiningboxGreen
-highlight! link jsonQuote MiningboxGreen
-highlight! link jsonBraces MiningboxFg1
-highlight! link jsonString MiningboxFg1
-
-" }}}
-
-" rust: {{{
-
-highlight! link rustSigil MiningboxOrange
-highlight! link rustEscape MiningboxAqua
-highlight! link rustStringContinuation MiningboxAqua
-highlight! link rustEnum MiningboxAqua
-highlight! link rustStructure MiningboxAqua
-highlight! link rustModPathSep MiningboxFg2
-highlight! link rustCommentLineDoc MiningboxComment
-highlight! link rustDefault MiningboxAqua
-
-" }}}
-
 " Custom specific: {{{
 
 " Transparency
-highlight! Normal guibg=NONE ctermbg=NONE
+if !has('gui_running')
+    highlight! Normal guibg=NONE ctermbg=NONE
+endif
+
+" GitGutter sign column
+highlight! link CursorLineSign LineNr
+
+" The column separating vertically split windows
+highlight! link VertSplit LineNr
 
 " End of buffer with same color of theme
 highlight! link EndOfBuffer LineNr
@@ -906,5 +660,6 @@ highlight! link EndOfBuffer LineNr
 " Unwanted spaces
 " @see syntax/syncolor.vim
 highlight! link ExtraWhitespace Error
+highlight! link WeirdWhitespace Warning
 
 " }}}

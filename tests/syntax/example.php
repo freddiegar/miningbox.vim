@@ -137,7 +137,7 @@ class Demo extends Base
     }
 }
 
-class Test
+class Test extends \DateTime
 {
     private DateTimeInterface $datetime;
 
