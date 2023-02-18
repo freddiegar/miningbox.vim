@@ -31,34 +31,18 @@ colorscheme miningbox
 
 ### Plugins
 
-- [coc.nvim](https://github.com/neoclide/coc.nvim/)
+- [ale](https://github.com/dense-analysis/ale)
 - [fzf](https://github.com/junegunn/fzf.vim)
 - [gitgutter](https://github.com/airblade/vim-gitgutter)
 - [goyo](https://github.com/junegunn/goyo.vim)
 - [limelight](https://github.com/junegunn/limelight.vim)
 - [netrw](https://www.vim.org/scripts/script.php?script_id=1075)
-- [sneak](https://github.com/justinmk/vim-sneak)
-- [syntastic](https://github.com/vim-syntastic/syntastic) @unmanteined
 - [vim-signature](https://github.com/kshenoy/vim-signature)
-- [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 
 ### Filetypes
 
-- c
-- css
 - diff
-- go
-- html
-- javascript
-- json
-- lua
-- markdown
 - php
-- python
-- rust
-- typescript
-- vim
-- xml
 
 ### Palette
 
