@@ -3,20 +3,20 @@ if exists("b:current_syntax")
 endif
 
 " use statement
-syn match phpUseNamespaceSeparator "\\" contained display
-syn keyword phpInclude use contained
+syntax match phpUseNamespaceSeparator "\\" contained display
+syntax keyword phpInclude use contained
       \ nextgroup=phpUseFunction,phpUseClass skipwhite skipempty
-syn match phpUseFunction /function\_s\+\(\\\|\h\w*\)*\h\w*/ contained contains=phpUseKeyword
+syntax match phpUseFunction /function\_s\+\(\\\|\h\w*\)*\h\w*/ contained contains=phpUseKeyword
       \ nextgroup=phpUseAlias skipwhite skipempty
-syn match phpUseClass /\(function\_s\+\)\@!\(\\\|\h\w*\)*\h\w*/ contained contains=phpUseNamespaceSeparator
+syntax match phpUseClass /\(function\_s\+\)\@!\(\\\|\h\w*\)*\h\w*/ contained contains=phpUseNamespaceSeparator
       \ nextgroup=phpUseAlias skipwhite skipempty
-syn match phpUseAlias /as\_s\+\h\w*/ contained contains=phpUseKeyword
-syn match phpUseKeyword /\(function\|as\)\_s\+/ contained contains=phpKeyword
+syntax match phpUseAlias /as\_s\+\h\w*/ contained contains=phpUseKeyword
+syntax match phpUseKeyword /\(function\|as\)\_s\+/ contained contains=phpKeyword
 
 " Function name
-syn keyword phpKeyword function contained
+syntax keyword phpKeyword function contained
       \ nextgroup=phpFunction skipwhite skipempty
-syn match phpFunction /\h\w*/ contained
+syntax match phpFunction /\h\w*/ contained
 
 " Keywords: class, interface, trait, etc
 highlight def link phpStructure     StorageClass
