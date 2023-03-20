@@ -1,7 +1,18 @@
+if exists('colors_name')
+    finish
+endif
+
+" Unwanted spaces
+highlight! link ExtraWhitespace Error
+highlight! link WeirdWhitespace Warning
+
+" Unwanted long lines
+highlight! link OverLenght Error
+
 augroup miningbox
     autocmd!
 
-    " Unwanted spaces
+    " Trailing spaces
     " @see https://vim.fandom.com/wiki/Highlight_unwanted_spaces
     autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
     autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -9,9 +20,9 @@ augroup miningbox
 
     " Char 160
     " @see https://www.codetable.net/decimal/160
-    autocmd BufWinEnter * match WeirdWhitespace / \+/
-    autocmd InsertEnter * match WeirdWhitespace / \+\%#\@<!/
-    autocmd InsertLeave * match WeirdWhitespace / \+/
+    autocmd BufWinEnter * 2match WeirdWhitespace / \+/
 
-    autocmd BufWinLeave * call clearmatches()
+    " Highlight color column on exceeds textwidth
+    autocmd BufWinEnter * if expand('<afile>:e') ==# 'php' && &textwidth | let w:miningbox_overlengh_id = matchadd('OverLenght', '\%<' . (&textwidth + 2) . 'v.\%>' . (&textwidth + 1) . 'v', 3) | endif
+    autocmd BufWinLeave * if expand('<afile>:e') ==# 'php' && exists('w:miningbox_overlengh_id') | call matchdelete(w:miningbox_overlengh_id) | endif
 augroup END

@@ -16,6 +16,9 @@ use Syntax\Example\AliasExample as Alias;
 use Syntax\Exception\ExampleException;
 use Throwable;
 
+// This a long long long long long long long long long line of text to test OverLength hig group define in syntax/syncolor.vim
+// This a anoter necesary long long long long long long line of text to test OverLength hig group define in syntax/syncolor.vim 
+
 interface Syntax
 {
     public function one(): void;
@@ -104,7 +107,7 @@ final class Base extends Highlighting
 
 class Demo extends Base
 {
-    public const CONSTANTE = 'CONSTANTE';
+    public const CONTANST = 'CONTANST';
 
     public static function makeStatic()
     {
@@ -167,7 +170,7 @@ class Test extends \DateTime
         $this->assertEquals(1.0, $demo->four());
         $this->assertEquals(true, $demo->five());
         $this->assertEquals([], $demo->six());
-        $this->assertEquals('CONSTANTE', Demo::CONSTANTE);
+        $this->assertEquals('CONTANST', Demo::CONTANST);
         $this->assertInstanceOf(Alias::class, $demo->aliasExample());
 
         try {

@@ -657,9 +657,4 @@ highlight! link VertSplit LineNr
 " End of buffer with same color of theme
 highlight! link EndOfBuffer LineNr
 
-" Unwanted spaces
-" @see syntax/syncolor.vim
-highlight! link ExtraWhitespace Error
-highlight! link WeirdWhitespace Warning
-
 " }}}

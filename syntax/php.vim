@@ -2,7 +2,7 @@ if exists("b:current_syntax")
     finish
 endif
 
-" use statement
+" Keywords: use
 syntax match phpUseNamespaceSeparator "\\" contained display
 syntax keyword phpInclude use contained
       \ nextgroup=phpUseFunction,phpUseClass skipwhite skipempty
@@ -13,7 +13,7 @@ syntax match phpUseClass /\(function\_s\+\)\@!\(\\\|\h\w*\)*\h\w*/ contained con
 syntax match phpUseAlias /as\_s\+\h\w*/ contained contains=phpUseKeyword
 syntax match phpUseKeyword /\(function\|as\)\_s\+/ contained contains=phpKeyword
 
-" Function name
+" Keywords: function
 syntax keyword phpKeyword function contained
       \ nextgroup=phpFunction skipwhite skipempty
 syntax match phpFunction /\h\w*/ contained
