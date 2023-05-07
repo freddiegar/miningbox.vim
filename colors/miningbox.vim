@@ -531,11 +531,11 @@ call s:HL('DiffText',   s:colors.yellow, s:colors.bg0, s:inverse)
 
 " Plugin specific -------------------------------------------------------------
 
-" Goyo: {{{
+" Sneak: {{{
 
-highlight! link VertSplit LineNr
-
-" }}}
+highlight! link Sneak Cursor
+highlight! link SneakScope Search
+highlight! link SneakLabel Search
 
 " Signature: {{{
 

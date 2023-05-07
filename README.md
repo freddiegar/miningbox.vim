@@ -37,6 +37,7 @@ colorscheme miningbox
 - [goyo](https://github.com/junegunn/goyo.vim)
 - [limelight](https://github.com/junegunn/limelight.vim)
 - [netrw](https://www.vim.org/scripts/script.php?script_id=1075)
+- [sneak](https://github.com/justinmk/vim-sneak)
 - [vim-signature](https://github.com/kshenoy/vim-signature)
 
 ### Filetypes
