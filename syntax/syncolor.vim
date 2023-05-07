@@ -1,4 +1,4 @@
-if exists('colors_name')
+if exists('g:colors_name')
     finish
 endif
 
@@ -23,6 +23,15 @@ augroup miningbox
     autocmd BufWinEnter * 2match WeirdWhitespace / \+/
 
     " Highlight color column on exceeds textwidth
-    autocmd BufWinEnter * if expand('<afile>:e') ==# 'php' && &textwidth | let w:miningbox_overlengh_id = matchadd('OverLenght', '\%<' . (&textwidth + 2) . 'v.\%>' . (&textwidth + 1) . 'v', 3) | endif
-    autocmd BufWinLeave * if expand('<afile>:e') ==# 'php' && exists('w:miningbox_overlengh_id') | silent! call matchdelete(w:miningbox_overlengh_id) | endif
+    autocmd BufWinEnter * if exists('b:current_syntax')
+                \ && expand('<afile>:e') ==# 'php'
+                \ && &textwidth
+                \ | let w:miningbox_overlengh_id = matchadd('OverLenght', '\%<' . (&textwidth + 2) . 'v.\%>' . (&textwidth + 1) . 'v', 3)
+                \ | endif
+
+    autocmd BufWinLeave * if exists('b:current_syntax')
+                \ && expand('<afile>:e') ==# 'php'
+                \ && exists('w:miningbox_overlengh_id')
+                \ | silent! call matchdelete(w:miningbox_overlengh_id)
+                \ | endif
 augroup END
