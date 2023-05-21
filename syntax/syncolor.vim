@@ -30,7 +30,6 @@ augroup miningbox
                 \ | endif
 
     autocmd BufWinLeave * if exists('b:current_syntax')
-                \ && expand('<afile>:e') ==# 'php'
                 \ && exists('w:miningbox_overlengh_id')
                 \ | silent! call matchdelete(w:miningbox_overlengh_id)
                 \ | endif
