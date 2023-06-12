@@ -21,35 +21,36 @@ endif
 
 let g:colors_name = 'miningbox'
 let g:colors_background = &background
+let s:istty = $TERM ==# 'linux' && !has('gui_running')
 
 " Palette: {{{
 
-"           Alias               HEX Dark    256  256   HEX Light
+"           Alias               HEX Dark    256  16  256   HEX Light
 let s:colors = {
-            \ 'bg0':            ['#1D2021', 234, 230, '#F9F5D7'],
-            \ 'bg1':            ['#3C3836', 237, 223, '#EBDBB2'],
-            \ 'bg2':            ['#504945', 239, 250, '#D5C4A1'],
-            \ 'bg3':            ['#665C54', 241, 248, '#BDAE93'],
-            \ 'bg4':            ['#7C6F64', 243, 246, '#A89984'],
-            \ 'fg0':            ['#FBF1C7', 229, 235, '#282828'],
-            \ 'fg1':            ['#EBDBB2', 223, 237, '#3C3836'],
-            \ 'fg2':            ['#D5C4A1', 250, 239, '#504943'],
-            \ 'fg3':            ['#BDAE93', 248, 241, '#665C54'],
-            \ 'fg4':            ['#A89984', 246, 243, '#7C6F64'],
-            \ 'gray':           ['#928374', 245, 245, '#928374'],
-            \ 'red':            ['#FB4934', 167, 88,  '#9D0006'],
-            \ 'green':          ['#B8BB26', 142, 100, '#79740E'],
-            \ 'yellow':         ['#FABD2F', 214, 136, '#B57614'],
-            \ 'blue':           ['#83A598', 109, 24,  '#076678'],
-            \ 'purple':         ['#D3869B', 175, 96,  '#8F3F71'],
-            \ 'aqua':           ['#8EC07C', 108, 65,  '#427B58'],
-            \ 'orange':         ['#FE8019', 208, 130, '#AF3A03'],
-            \ 'neutral_red':    ['#CC241D', 124, 124, '#CC241D'],
-            \ 'neutral_green':  ['#98971A', 106, 106, '#98971A'],
-            \ 'neutral_yellow': ['#D79921', 172, 172, '#D79921'],
-            \ 'neutral_blue':   ['#458588', 66,   66,  '#458588'],
-            \ 'neutral_purple': ['#B16286', 132, 132, '#B16286'],
-            \ 'neutral_aqua':   ['#689D6A', 72,   72,  '#689D6A']
+            \ 'bg0':            ['#1D2021', 234,  0, 230, '#F9F5D7'],
+            \ 'bg1':            ['#3C3836', 237, -1, 223, '#EBDBB2'],
+            \ 'bg2':            ['#504945', 239, -1, 250, '#D5C4A1'],
+            \ 'bg3':            ['#665C54', 241, -1, 248, '#BDAE93'],
+            \ 'bg4':            ['#7C6F64', 243, -1, 246, '#A89984'],
+            \ 'fg0':            ['#FBF1C7', 229, -1, 235, '#282828'],
+            \ 'fg1':            ['#EBDBB2', 223, 15, 237, '#3C3836'],
+            \ 'fg2':            ['#D5C4A1', 250, -1, 239, '#504943'],
+            \ 'fg3':            ['#BDAE93', 248, -1, 241, '#665C54'],
+            \ 'fg4':            ['#A89984', 246,  7, 243, '#7C6F64'],
+            \ 'gray':           ['#928374', 245,  8, 245, '#928374'],
+            \ 'red':            ['#FB4934', 167,  9, 88,  '#9D0006'],
+            \ 'green':          ['#B8BB26', 142, 10, 100, '#79740E'],
+            \ 'yellow':         ['#FABD2F', 214, 11, 136, '#B57614'],
+            \ 'blue':           ['#83A598', 109, 12, 24,  '#076678'],
+            \ 'purple':         ['#D3869B', 175, 13, 96,  '#8F3F71'],
+            \ 'aqua':           ['#8EC07C', 108, 14, 65,  '#427B58'],
+            \ 'orange':         ['#FE8019', 208, -1, 130, '#AF3A03'],
+            \ 'neutral_red':    ['#CC241D', 124,  1, 124, '#CC241D'],
+            \ 'neutral_green':  ['#98971A', 106,  2, 106, '#98971A'],
+            \ 'neutral_yellow': ['#D79921', 172,  3, 172, '#D79921'],
+            \ 'neutral_blue':   ['#458588', 66,   4, 66,  '#458588'],
+            \ 'neutral_purple': ['#B16286', 132,  5, 132, '#B16286'],
+            \ 'neutral_aqua':   ['#689D6A', 72,   6, 72,  '#689D6A']
             \ }
 
 " }}}
@@ -60,6 +61,21 @@ if &background ==# 'light'
     for ncolor in keys(s:colors)
         let s:colors[ncolor] = reverse(s:colors[ncolor])
     endfor
+endif
+
+" Setup Colors: (on terminal uses 16 colors) {{{
+
+if s:istty
+    let s:colors.bg0[1] = s:colors.bg0[2]
+    let s:colors.fg4[1] = s:colors.fg4[2]
+    let s:colors.gray[1] = s:colors.gray[2]
+    let s:colors.red[1] = s:colors.red[2]
+    let s:colors.green[1] = s:colors.green[2]
+    let s:colors.yellow[1] = s:colors.yellow[2]
+    let s:colors.blue[1] = s:colors.blue[2]
+    let s:colors.purple[1] = s:colors.purple[2]
+    let s:colors.aqua[1] = s:colors.aqua[2]
+    let s:colors.fg1[1] = s:colors.fg1[2]
 endif
 
 " }}}
@@ -257,7 +273,7 @@ call s:HL('Conceal', s:colors.blue, s:none)
 highlight! NonText ctermfg=238 guifg=#2E2E2E
 highlight! SpecialKey ctermfg=238 guifg=#2E2E2E
 
-call s:HL('Visual', s:none, s:colors.bg3, '')
+call s:HL('Visual', (s:istty ? s:colors.gray : s:none), s:colors.bg3, s:inverse)
 highlight! link VisualNOS Visual
 
 call s:HL('Search', s:colors.yellow, s:colors.bg0, s:inverse)

@@ -28,6 +28,7 @@ colorscheme miningbox
 - Show extra white spaces (aka: tail) as Error
 - Show no-break space (aka: char 160) as Warning
 - GUI Support
+- Terminal Support
 
 ### Plugins
 
