@@ -6,11 +6,12 @@
 " Thanks:       https://github.com/gruvbox-community/gruvbox
 " -----------------------------------------------------------------------------
 
-if exists('g:colors_name') && g:colors_name ==# 'miningbox'
+if exists('g:colors_name') && g:colors_name ==# 'miningbox' && &background ==# get(g:, 'colors_background')
     finish
 endif
 
-set background=dark
+" Allow changing between dark and light background
+let &background=&background
 
 highlight clear
 
@@ -19,35 +20,47 @@ if exists('syntax_on')
 endif
 
 let g:colors_name = 'miningbox'
+let g:colors_background = &background
 
 " Palette: {{{
 
+"           Alias               HEX Dark    256  256   HEX Light
 let s:colors = {
-            \ 'bg0':            ['#1D2021', 234],
-            \ 'bg1':            ['#3C3836', 237],
-            \ 'bg2':            ['#504945', 239],
-            \ 'bg3':            ['#665C54', 241],
-            \ 'bg4':            ['#7C6F64', 243],
-            \ 'fg0':            ['#FBF1C7', 229],
-            \ 'fg1':            ['#EBDBB2', 223],
-            \ 'fg2':            ['#D5C4A1', 250],
-            \ 'fg3':            ['#BDAE93', 248],
-            \ 'fg4':            ['#A89984', 246],
-            \ 'gray':           ['#928374', 245],
-            \ 'red':            ['#FB4934', 167],
-            \ 'green':          ['#B8BB26', 142],
-            \ 'yellow':         ['#FABD2F', 214],
-            \ 'blue':           ['#83A598', 109],
-            \ 'purple':         ['#D3869B', 175],
-            \ 'aqua':           ['#8EC07C', 108],
-            \ 'orange':         ['#FE8019', 208],
-            \ 'neutral_red':    ['#CC241D', 124],
-            \ 'neutral_green':  ['#98971A', 106],
-            \ 'neutral_yellow': ['#D79921', 172],
-            \ 'neutral_blue':   ['#458588', 66],
-            \ 'neutral_purple': ['#B16286', 132],
-            \ 'neutral_aqua':   ['#689D6A', 72]
+            \ 'bg0':            ['#1D2021', 234, 230, '#F9F5D7'],
+            \ 'bg1':            ['#3C3836', 237, 223, '#EBDBB2'],
+            \ 'bg2':            ['#504945', 239, 250, '#D5C4A1'],
+            \ 'bg3':            ['#665C54', 241, 248, '#BDAE93'],
+            \ 'bg4':            ['#7C6F64', 243, 246, '#A89984'],
+            \ 'fg0':            ['#FBF1C7', 229, 235, '#282828'],
+            \ 'fg1':            ['#EBDBB2', 223, 237, '#3C3836'],
+            \ 'fg2':            ['#D5C4A1', 250, 239, '#504943'],
+            \ 'fg3':            ['#BDAE93', 248, 241, '#665C54'],
+            \ 'fg4':            ['#A89984', 246, 243, '#7C6F64'],
+            \ 'gray':           ['#928374', 245, 245, '#928374'],
+            \ 'red':            ['#FB4934', 167, 88,  '#9D0006'],
+            \ 'green':          ['#B8BB26', 142, 100, '#79740E'],
+            \ 'yellow':         ['#FABD2F', 214, 136, '#B57614'],
+            \ 'blue':           ['#83A598', 109, 24,  '#076678'],
+            \ 'purple':         ['#D3869B', 175, 96,  '#8F3F71'],
+            \ 'aqua':           ['#8EC07C', 108, 65,  '#427B58'],
+            \ 'orange':         ['#FE8019', 208, 130, '#AF3A03'],
+            \ 'neutral_red':    ['#CC241D', 124, 124, '#CC241D'],
+            \ 'neutral_green':  ['#98971A', 106, 106, '#98971A'],
+            \ 'neutral_yellow': ['#D79921', 172, 172, '#D79921'],
+            \ 'neutral_blue':   ['#458588', 66,   66,  '#458588'],
+            \ 'neutral_purple': ['#B16286', 132, 132, '#B16286'],
+            \ 'neutral_aqua':   ['#689D6A', 72,   72,  '#689D6A']
             \ }
+
+" }}}
+
+" Setup Colors: (background light mode) {{{
+
+if &background ==# 'light'
+    for ncolor in keys(s:colors)
+        let s:colors[ncolor] = reverse(s:colors[ncolor])
+    endfor
+endif
 
 " }}}
 
@@ -63,7 +76,7 @@ let s:inverse = 'inverse,'
 
 " Setup Colors: {{{
 
-let s:vim_bg = ['bg', 'bg']
+" let s:vim_bg = ['bg', 'bg']
 let s:vim_fg = ['fg', 'fg']
 let s:none = ['NONE', 'NONE']
 
@@ -513,7 +526,7 @@ highlight! link diffLine MiningboxBlue
 " Custom specific: {{{
 
 " Transparency
-if !has('gui_running')
+if !has('gui_running') && &background ==# 'dark'
     highlight! Normal guibg=NONE ctermbg=NONE
 endif
 

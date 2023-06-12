@@ -1,6 +1,6 @@
 # Miningbox
 
-Dark colorscheme based in Gruvbox (Fantastic!) colorscheme
+Dark and Light colorscheme based in Gruvbox (Fantastic!) colorscheme
 
 ## Installation
 
