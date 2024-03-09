@@ -24,6 +24,8 @@ highlight def link phpStructure     StorageClass
 highlight def link phpInclude       StorageClass
 " Keywords: new, clone, function, fn, echo, etc
 highlight def link phpDefine        StorageClass
+" Delimeters: (, [, {
+highlight def link Delimiter        MiningboxOrange
 
 " Keywords: as in use statement
 highlight def link phpUseKeyword    phpKeyword

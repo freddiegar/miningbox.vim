@@ -10,8 +10,16 @@ if exists('g:colors_name') && g:colors_name ==# 'miningbox' && &background ==# g
     finish
 endif
 
-" Allow changing between dark and light background
-let &background=&background
+if !exists('g:colors_name') && filereadable(expand('~/.Xresources'))
+    " Detect background using Xresources
+    "   Option 1: [95]#1D2021
+    "   Option 2: #1D2021
+    let s:hexacolor = system('xrdb -query | grep background -m 1 | cut -f 2 | tr -d "\n"')
+    let &background = (s:hexacolor[0] ==# '[' && match(split(s:hexacolor, '#')[1][0], '[0-7]') == 0) || match(s:hexacolor[1], '[0-7]') == 0 ? 'dark' : 'light'
+else
+    " Allow changing between dark and light background
+    let &background = &background
+endif
 
 highlight clear
 
@@ -541,7 +549,7 @@ highlight! link diffLine MiningboxBlue
 
 " Custom specific: {{{
 
-" Transparency
+" Transparency (Very important in Light mode!)
 if !has('gui_running') && &background ==# 'dark'
     highlight! Normal guibg=NONE ctermbg=NONE
 endif
