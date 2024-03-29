@@ -10,12 +10,14 @@ if exists('g:colors_name') && g:colors_name ==# 'miningbox' && &background ==# g
     finish
 endif
 
+let s:istty = $TERM ==# 'linux' && !has('gui_running')
+
 if !exists('g:colors_name') && filereadable(expand('~/.Xresources'))
     " Detect background using Xresources
     "   Option 1: [95]#1D2021
     "   Option 2: #1D2021
     let s:hexacolor = system('xrdb -query | grep background -m 1 | cut -f 2 | tr -d "\n"')
-    let &background = (s:hexacolor[0] ==# '[' && match(split(s:hexacolor, '#')[1][0], '[0-7]') == 0) || match(s:hexacolor[1], '[0-7]') == 0 ? 'dark' : 'light'
+    let &background = s:istty || (s:hexacolor[0] ==# '[' && match(split(s:hexacolor, '#')[1][0], '[0-7]') == 0) || match(s:hexacolor[1], '[0-7]') == 0 ? 'dark' : 'light'
 else
     " Allow changing between dark and light background
     let &background = &background
@@ -29,7 +31,6 @@ endif
 
 let g:colors_name = 'miningbox'
 let g:colors_background = &background
-let s:istty = $TERM ==# 'linux' && !has('gui_running')
 
 " Palette: {{{
 
@@ -437,20 +438,20 @@ call s:HL('DiffText',   s:colors.yellow, s:colors.bg0, s:inverse)
 
 " Plugin specific -------------------------------------------------------------
 
-" Sneak: {{{
+" Sneak: justinmk/vim-sneak {{{
 
 highlight! link Sneak Cursor
 highlight! link SneakScope Search
 highlight! link SneakLabel Search
 
-" Signature: {{{
+" Signature: kshenoy/vim-signature{{{
 
 call s:HL('SignatureMarkText', s:colors.bg4, s:none)
 call s:HL('SignatureMarkerText', s:colors.bg4, s:none)
 
 " }}}
 
-" GitGutter: {{{
+" GitGutter: airblade/vim-gitgutter {{{
 
 call s:HL('GitGutterAdd', s:colors.bg4, s:none)
 call s:HL('GitGutterChange', s:colors.bg4, s:none)
@@ -459,21 +460,23 @@ call s:HL('GitGutterChangeDelete', s:colors.bg4, s:none)
 
 " }}}
 
-" ALE: {{{
+" ALE: dense-analysis/ale {{{
 
 highlight! link ALEError MiningboxRedUnderline
 highlight! link ALEWarning MiningboxYellowUnderline
+highlight! link ALEInfo MiningboxBlueUnderline
 
 " ALE sign with same color of theme
 call s:HL('ALEErrorSign', s:none, s:colors.neutral_red)
 call s:HL('ALEWarningSign', s:none, s:colors.neutral_red)
+call s:HL('ALEInfoSign', s:none, s:colors.neutral_blue)
 
 " Custom color #1 in statusline
 call s:HL('User1', s:none, s:colors.neutral_red)
 
 " }}}
 
-" FZF: {{{
+" FZF: junegunn/fzf.vim {{{
 " Usage: 'bg+': ['bg', 'CursorLine', 'CursorColumn', ...]
 "          │       │          │           │
 "          │       │          │           ╰─ if not set fallback CursorLine, so on so far
@@ -540,10 +543,12 @@ highlight! link diffAdded MiningboxGreen
 highlight! link diffRemoved MiningboxRed
 highlight! link diffChanged MiningboxAqua
 
-highlight! link diffFile MiningboxOrange
-highlight! link diffNewFile MiningboxYellow
+highlight! link diffFile MiningboxBlue
+highlight! link diffNewFile MiningboxOrange
+highlight! link diffOldFile MiningboxYellow
 
-highlight! link diffLine MiningboxBlue
+highlight! link diffLine MiningboxGray
+highlight! link diffIndexLine MiningboxPurple
 
 " }}}
 
