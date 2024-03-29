@@ -16,9 +16,13 @@ use Syntax\Example\AliasExample as Alias;
 use Syntax\Exception\ExampleException;
 use Throwable;
 
+require 'file.php';
+
+include 'optional.php';
+
 // TODO: Task to do comment
-// This a long long long long long long long long long line of text to test OverLength hig group define in syntax/syncolor.vim
-// This a anoter necesary long long long long long long line of text to test OverLength hig group define in syntax/syncolor.vim 
+// This a long long long long long long long long long line of text to test OverLength hig group define in syntax/syncolor.vim
+// This a anoter necesary long long long long long long line of text to test OverLength hig group define in syntax/syncolor.vim
 
 interface Syntax
 {
@@ -77,7 +81,7 @@ abstract class Highlighting implements Syntax
 
     public function five(): bool
     {
-        return \array_rand([true, false])[0];
+        return array_rand([true, false])[0];
     }
 }
 
@@ -179,7 +183,7 @@ class Test extends \DateTime
         } catch (ExampleException $e) {
             die($e->getFile());
         } catch (Exception $e) {
-            echo $e->getError();
+            print $e->getError();
         } catch (Throwable $e) {
             unset($demo);
         }
