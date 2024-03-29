@@ -540,6 +540,43 @@ highlight! link netrwVersion MiningboxGreen
 
 " }}}
 
+" Cmp: hrsh7th/nvim-cmp {{{
+
+if has('nvim')
+    highlight! link CmpItemAbbr MiningboxFg0
+    highlight! link CmpItemAbbrDeprecated MiningboxFg1
+    highlight! link CmpItemAbbrMatch MiningboxBlueBold
+    highlight! link CmpItemAbbrMatchFuzzy MiningboxBlueUnderline
+    highlight! link CmpItemMenu MiningboxGray
+    highlight! link CmpItemKindText MiningboxOrange
+    highlight! link CmpItemKindVariable MiningboxOrange
+    highlight! link CmpItemKindMethod MiningboxBlue
+    highlight! link CmpItemKindFunction MiningboxBlue
+    highlight! link CmpItemKindConstructor MiningboxYellow
+    highlight! link CmpItemKindUnit MiningboxBlue
+    highlight! link CmpItemKindField MiningboxBlue
+    highlight! link CmpItemKindClass MiningboxYellow
+    highlight! link CmpItemKindInterface MiningboxYellow
+    highlight! link CmpItemKindModule MiningboxBlue
+    highlight! link CmpItemKindProperty MiningboxBlue
+    highlight! link CmpItemKindValue MiningboxOrange
+    highlight! link CmpItemKindEnum MiningboxYellow
+    highlight! link CmpItemKindOperator MiningboxYellow
+    highlight! link CmpItemKindKeyword MiningboxPurple
+    highlight! link CmpItemKindEvent MiningboxPurple
+    highlight! link CmpItemKindReference MiningboxPurple
+    highlight! link CmpItemKindColor MiningboxPurple
+    highlight! link CmpItemKindSnippet MiningboxGreen
+    highlight! link CmpItemKindFile MiningboxBlue
+    highlight! link CmpItemKindFolder MiningboxBlue
+    highlight! link CmpItemKindEnumMember MiningboxAqua
+    highlight! link CmpItemKindConstant MiningboxOrange
+    highlight! link CmpItemKindStruct MiningboxYellow
+    highlight! link CmpItemKindTypeParameter MiningboxYellow
+endif
+
+" }}}
+
 " Filetype specific -----------------------------------------------------------
 
 " diff: {{{
@@ -572,5 +609,145 @@ highlight! link VertSplit LineNr
 
 " End of buffer with same color of theme
 highlight! link EndOfBuffer LineNr
+
+" }}}
+
+" Treesitter: nvim-treesitter/nvim-treesitter {{{
+
+if has('nvim')
+    highlight! link @comment Comment
+    " ["@none"] = { bg = "NONE", fg = "NONE" },
+    highlight! link @preproc PreProc
+    highlight! link @define Define
+    highlight! link @operator Operator
+    highlight! link @punctuation.delimiter MiningboxFg1
+    highlight! link @punctuation.bracket Delimiter
+    highlight! link @punctuation.special MiningboxFg1
+    highlight! link @string String
+    highlight! link @string.regex String
+    highlight! link @string.regexp String
+    highlight! link @string.escape SpecialChar
+    highlight! link @string.special SpecialChar
+    highlight! link @string.special.path Underlined
+    highlight! link @string.special.symbol Identifier
+    highlight! link @string.special.url Underlined
+    highlight! link @character Character
+    highlight! link @character.special SpecialChar
+    highlight! link @boolean Boolean
+    highlight! link @number Number
+    highlight! link @number.float Float
+    highlight! link @float Float
+    highlight! link @function Function
+    highlight! link @function.builtin Special
+    highlight! link @function.call Function
+    highlight! link @function.macro Macro
+    highlight! link @function.method Function
+    highlight! link @method Function
+    highlight! link @method.call Function
+    highlight! link @constructor Special
+    highlight! link @parameter Identifier
+    highlight! link @keyword Keyword
+    highlight! link @keyword.conditional Conditional
+    highlight! link @keyword.debug Debug
+    highlight! link @keyword.directive PreProc
+    highlight! link @keyword.directive.define Define
+    highlight! link @keyword.exception Exception
+    highlight! link @keyword.function Keyword
+    highlight! link @keyword.import Include
+    highlight! link @keyword.operator MiningboxRed
+    highlight! link @keyword.repeat Repeat
+    highlight! link @keyword.return MiningboxRed
+    highlight! link @keyword.storage StorageClass
+    highlight! link @conditional Conditional
+    highlight! link @repeat Repeat
+    highlight! link @debug Debug
+    highlight! link @label Label
+    highlight! link @include Include
+    highlight! link @exception Exception
+    highlight! link @type Type
+    highlight! link @type.builtin MiningboxYellow
+    highlight! link @type.definition Typedef
+    highlight! link @type.qualifier Keyword
+    highlight! link @storageclass StorageClass
+    highlight! link @attribute PreProc
+    highlight! link @field Identifier
+    highlight! link @property Identifier
+    highlight! link @variable Identifier
+    highlight! link @variable.builtin Special
+    highlight! link @variable.member Identifier
+    highlight! link @variable.parameter Identifier
+    highlight! link @constant Constant
+    highlight! link @constant.builtin MiningboxYellow
+    highlight! link @constant.macro Define
+    highlight! link @markup MiningboxFg1
+    " ["@markup.strong"] = { bold = config.bold },
+    " ["@markup.emphasis"] = { italic = config.italic.emphasis },
+    " ["@markup.underline"] = { underline = config.underline },
+    " ["@markup.strike"] = { strikethrough = config.strikethrough },
+    highlight! link @markup.heading Title
+    highlight! link @markup.raw String
+    highlight! link @markup.math Special
+    highlight! link @markup.environment Macro
+    highlight! link @markup.environment.name Type
+    highlight! link @markup.link Underlined
+    highlight! link @markup.link.label SpecialChar
+    highlight! link @markup.list Delimiter
+    highlight! link @markup.list.checked MiningboxGreen
+    highlight! link @markup.list.unchecked MiningboxGray
+    highlight! link @comment.todo Todo
+    highlight! link @comment.note SpecialComment
+    highlight! link @comment.warning WarningMsg
+    highlight! link @comment.error ErrorMsg
+    highlight! link @diff.plus diffAdded
+    highlight! link @diff.minus diffRemoved
+    highlight! link @diff.delta diffChanged
+    highlight! link @module MiningboxBlue
+    highlight! link @namespace MiningboxFg1
+    highlight! link @symbol Identifier
+    highlight! link @text MiningboxFg1
+    " ["@text.strong"] = { bold = config.bold },
+    " ["@text.emphasis"] = { italic = config.italic.emphasis },
+    " ["@text.underline"] = { underline = config.underline },
+    " ["@text.strike"] = { strikethrough = config.strikethrough },
+    highlight! link @text.title Title
+    highlight! link @text.literal String
+    highlight! link @text.uri Underlined
+    highlight! link @text.math Special
+    highlight! link @text.environment Macro
+    highlight! link @text.environment.name Type
+    highlight! link @text.reference Constant
+    highlight! link @text.todo Todo
+    highlight! link @text.todo.checked MiningboxGreen
+    highlight! link @text.todo.unchecked MiningboxGray
+    highlight! link @text.note SpecialComment
+    " ["@text.note.comment"] = { fg = colors.purple, bold = config.bold },
+    highlight! link @text.warning WarningMsg
+    highlight! link @text.danger ErrorMsg
+    " ["@text.danger.comment"] = { fg = colors.fg0, bg = colors.red, bold = config.bold },
+    highlight! link @text.diff.add diffAdded
+    highlight! link @text.diff.delete diffRemoved
+    highlight! link @tag Tag
+    highlight! link @tag.attribute Identifier
+    highlight! link @tag.delimiter Delimiter
+    highlight! link @punctuation Delimiter
+    highlight! link @macro Macro
+    highlight! link @structure Structure
+    highlight! link @lsp.type.class @type
+    highlight! link @lsp.type.comment @comment
+    highlight! link @lsp.type.decorator @macro
+    highlight! link @lsp.type.enum @type
+    highlight! link @lsp.type.enumMember @constant
+    highlight! link @lsp.type.function @function
+    highlight! link @lsp.type.interface @constructor
+    highlight! link @lsp.type.macro @macro
+    highlight! link @lsp.type.method @method
+    highlight! link @lsp.type.namespace @namespace
+    highlight! link @lsp.type.parameter @parameter
+    highlight! link @lsp.type.property @property
+    highlight! link @lsp.type.struct @type
+    highlight! link @lsp.type.type @type
+    highlight! link @lsp.type.typeParameter @type.definition
+    highlight! link @lsp.type.variable @variable
+endif
 
 " }}}

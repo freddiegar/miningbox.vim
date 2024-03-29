@@ -18,6 +18,7 @@ set termguicolors
 colorscheme miningbox
 ```
 > Vim: 8
+> Nvim: 0.10+
 
 ## Features
 
@@ -41,9 +42,15 @@ colorscheme miningbox
 - [sneak](https://github.com/justinmk/vim-sneak)
 - [vim-signature](https://github.com/kshenoy/vim-signature)
 
+### Plugins only nvim
+
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+
 ### Filetypes
 
 - diff
+- markdown
 - php
 
 ### Palette
