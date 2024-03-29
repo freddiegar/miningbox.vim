@@ -91,7 +91,7 @@ endif
 
 " Setup Emphasis: {{{
 
-let s:bold = 'bold,'
+let s:bold = ''
 let s:italic = ''
 let s:underline = 'underline,'
 let s:undercurl = 'undercurl,'
@@ -217,7 +217,7 @@ endfunction
 
 "  Highlight Groups: {{{
 
-" call s:HL('MiningboxFg0', s:colors.fg0)
+call s:HL('MiningboxFg0', s:colors.fg0)
 call s:HL('MiningboxFg1', s:colors.fg1)
 " call s:HL('MiningboxFg2', s:colors.fg2)
 call s:HL('MiningboxFg3', s:colors.fg3)
@@ -236,7 +236,7 @@ call s:HL('MiningboxGreenBold', s:colors.green, s:none, s:bold)
 call s:HL('MiningboxYellow', s:colors.yellow)
 call s:HL('MiningboxYellowBold', s:colors.yellow, s:none, s:bold)
 call s:HL('MiningboxBlue', s:colors.blue)
-" call s:HL('MiningboxBlueBold', s:colors.blue, s:none, s:bold)
+call s:HL('MiningboxBlueBold', s:colors.blue, s:none, s:bold)
 call s:HL('MiningboxPurple', s:colors.purple)
 " call s:HL('MiningboxPurpleBold', s:colors.purple, s:none, s:bold)
 call s:HL('MiningboxAqua', s:colors.aqua)
@@ -246,6 +246,7 @@ call s:HL('MiningboxOrangeBold', s:colors.orange, s:none, s:bold)
 
 call s:HL('MiningboxRedUnderline', s:none, s:none, s:undercurl, s:colors.red)
 call s:HL('MiningboxYellowUnderline', s:none, s:none, s:undercurl, s:colors.yellow)
+call s:HL('MiningboxBlueUnderline', s:none, s:none, s:undercurl, s:colors.blue)
 
 " }}}
 
@@ -301,6 +302,9 @@ call s:HL('WildMenu', s:colors.blue, s:colors.bg2, s:bold)
 
 " Directory names, special names in listing
 highlight! link Directory MiningboxGreenBold
+
+" Delimeters: (, [, {
+highlight! link Delimiter MiningboxOrange
 
 " Titles for output from :set all, :autocmd, etc.
 highlight! link Title MiningboxGreenBold
@@ -363,16 +367,17 @@ highlight! link Exception MiningboxRed
 highlight! link Operator MiningboxFg1
 " Any other keyword
 highlight! link Keyword MiningboxRed
+" highlight! link Keyword MiningboxOrange
 
 " Variable name
 highlight! link Identifier MiningboxBlue
 " Function name
-highlight! link Function MiningboxGreenBold
+highlight! link Function MiningboxFg1
 
 " Generic preprocessor
 highlight! link PreProc MiningboxAqua
 " Preprocessor #include
-highlight! link Include MiningboxAqua
+highlight! link Include MiningboxOrange
 " Preprocessor #define
 highlight! link Define MiningboxAqua
 " Same as Define
@@ -394,13 +399,13 @@ highlight! link Number MiningboxPurple
 highlight! link Float MiningboxPurple
 
 " Generic type
-highlight! link Type MiningboxYellow
+highlight! link Type MiningboxFg1
 " static, register, volatile, etc
 highlight! link StorageClass MiningboxOrange
 " struct, union, enum, etc.
 highlight! link Structure MiningboxAqua
-" typedef
-highlight! link Typedef MiningboxYellow
+" type definition
+highlight! link Typedef MiningboxFg1
 
 " }}}
 
