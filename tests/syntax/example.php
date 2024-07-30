@@ -41,6 +41,14 @@ interface Syntax
     public function date(): DateTimeInterface;
 }
 
+/**
+ * # Header
+ * ## Title
+ * Love *is* italic
+ * Love **is** bold
+ * Love ~~is~~ strikethrough
+ * > Note
+ */
 trait SixMethod
 {
     public function six(): array

@@ -96,6 +96,7 @@ let s:italic = ''
 let s:underline = 'underline,'
 let s:undercurl = 'undercurl,'
 let s:inverse = 'inverse,'
+let s:strikethrough = 'strikethrough,'
 
 " }}}
 
@@ -616,7 +617,7 @@ highlight! link EndOfBuffer LineNr
 
 if has('nvim')
     highlight! link @comment Comment
-    " ["@none"] = { bg = "NONE", fg = "NONE" },
+    call s:HL('@none', s:none, s:none) " ['@none'] = {fg = 'NONE',  bg = 'NONE' },
     highlight! link @preproc PreProc
     highlight! link @define Define
     highlight! link @operator Operator
@@ -680,10 +681,10 @@ if has('nvim')
     highlight! link @constant.builtin MiningboxYellow
     highlight! link @constant.macro Define
     highlight! link @markup MiningboxFg1
-    " ["@markup.strong"] = { bold = config.bold },
-    " ["@markup.emphasis"] = { italic = config.italic.emphasis },
-    " ["@markup.underline"] = { underline = config.underline },
-    " ["@markup.strike"] = { strikethrough = config.strikethrough },
+    call s:HL('@markup.strong', s:none, s:none, s:bold) " ['@markup.strong'] = { bold = config.bold },
+    call s:HL('@markup.emphasis', s:none, s:none, s:italic) " ['@markup.emphasis'] = { italic = config.italic.emphasis },
+    call s:HL('@markup.underline', s:none, s:none, s:underline) " ['@markup.underline'] = { underline = config.underline },
+    call s:HL('@markup.strike', s:none, s:none, s:strikethrough) " ['@markup.strike'] = { strikethrough = config.strikethrough },
     highlight! link @markup.heading Title
     highlight! link @markup.raw String
     highlight! link @markup.math Special
@@ -705,10 +706,10 @@ if has('nvim')
     highlight! link @namespace MiningboxFg1
     highlight! link @symbol Identifier
     highlight! link @text MiningboxFg1
-    " ["@text.strong"] = { bold = config.bold },
-    " ["@text.emphasis"] = { italic = config.italic.emphasis },
-    " ["@text.underline"] = { underline = config.underline },
-    " ["@text.strike"] = { strikethrough = config.strikethrough },
+    call s:HL('@text.strong', s:none, s:none, s:bold) " ['@text.strong'] = { bold = config.bold },
+    call s:HL('@text.emphasis', s:none, s:none, s:italic) " ['@text.emphasis'] = { italic = config.italic.emphasis },
+    call s:HL('@text.underline', s:none, s:none, s:underline) " ['@text.underline'] = { underline = config.underline },
+    call s:HL('@text.strike', s:none, s:none, s:strikethrough) " ['@text.strike'] = { strikethrough = config.strikethrough },
     highlight! link @text.title Title
     highlight! link @text.literal String
     highlight! link @text.uri Underlined
@@ -720,10 +721,10 @@ if has('nvim')
     highlight! link @text.todo.checked MiningboxGreen
     highlight! link @text.todo.unchecked MiningboxGray
     highlight! link @text.note SpecialComment
-    " ["@text.note.comment"] = { fg = colors.purple, bold = config.bold },
+    call s:HL('@text.note.comment', s:colors.purple, s:none, s:bold) " ['@text.note.comment'] = { fg = colors.purple, bold = config.bold },
     highlight! link @text.warning WarningMsg
     highlight! link @text.danger ErrorMsg
-    " ["@text.danger.comment"] = { fg = colors.fg0, bg = colors.red, bold = config.bold },
+    call s:HL('@text.danger.comment', s:colors.fg0, s:colors.red, s:bold) " ['@text.danger.comment'] = { fg = colors.fg0, bg = colors.red, bold = config.bold },
     highlight! link @text.diff.add diffAdded
     highlight! link @text.diff.delete diffRemoved
     highlight! link @tag Tag
