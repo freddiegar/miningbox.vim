@@ -257,6 +257,8 @@ call s:HL('MiningboxBlueUnderline', s:none, s:none, s:undercurl, s:colors.blue)
 
 " Normal text (Need color, in the end it's removed)
 call s:HL('Normal', s:colors.fg1, s:colors.bg0)
+call s:HL('NormalFloat', s:colors.fg1, s:colors.bg1)
+highlight! link NormalNC Normal
 
 " Screen line that the cursor is
 call s:HL('CursorLine', s:none, s:colors.bg1)
@@ -297,6 +299,10 @@ call s:HL('Underlined', s:colors.blue, s:none, s:underline)
 call s:HL('StatusLine', s:colors.bg4, s:none)
 " italic, is IMPORTANT: fix ^ char in not current statusline
 call s:HL('StatusLineNC', s:colors.bg4, s:none, 'italic,')
+
+call s:HL('WinBar', s:colors.fg4, s:colors.bg0)
+call s:HL('WinBarNC', s:colors.fg3, s:colors.bg1)
+call s:HL('WinSeparator', s:colors.bg3, s:none)
 
 " Current match in wildmenu completion
 call s:HL('WildMenu', s:colors.blue, s:colors.bg2, s:bold)
