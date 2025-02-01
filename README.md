@@ -42,8 +42,9 @@ colorscheme miningbox
 - [sneak](https://github.com/justinmk/vim-sneak)
 - [vim-signature](https://github.com/kshenoy/vim-signature)
 
-### Plugins only nvim
+### Plugins ONLY nvim
 
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 

@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 
 ## [Unreleased]
 
+## 0.2.1
+
+- Added support Treesitter groups (in Nvim)
+
 ## 0.2.0
 
 - Tagged version for support Treesitter (in Nvim)

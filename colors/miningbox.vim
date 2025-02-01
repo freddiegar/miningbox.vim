@@ -472,6 +472,16 @@ call s:HL('GitGutterChangeDelete', s:colors.bg4, s:none)
 
 " }}}
 
+" GitSigns: lewis6991/gitsigns.nvim {{{
+
+call s:HL('GitSignsAdd', s:colors.bg4, s:none)
+call s:HL('GitSignsChange', s:colors.bg4, s:none)
+call s:HL('GitSignsDelete', s:colors.bg4, s:none)
+call s:HL('GitSignsChangeDelete', s:colors.bg4, s:none)
+highlight! link GitSignsCurrentLineBlame LineNr
+
+" }}}
+
 " ALE: dense-analysis/ale {{{
 
 highlight! link ALEError MiningboxRedUnderline
