@@ -495,6 +495,7 @@ call s:HL('ALEInfoSign', s:none, s:colors.neutral_blue)
 
 " Custom color #1 in statusline
 call s:HL('User1', s:none, s:colors.neutral_red)
+call s:HL('User2', s:none, s:colors.neutral_yellow)
 
 " }}}
 
@@ -632,6 +633,8 @@ highlight! link EndOfBuffer LineNr
 " Treesitter: nvim-treesitter/nvim-treesitter {{{
 
 if has('nvim')
+    highlight! link LspInlayHint Comment
+
     highlight! link @comment Comment
     call s:HL('@none', s:none, s:none) " ['@none'] = {fg = 'NONE',  bg = 'NONE' },
     highlight! link @preproc PreProc
@@ -699,8 +702,10 @@ if has('nvim')
     highlight! link @markup MiningboxFg1
     call s:HL('@markup.strong', s:none, s:none, s:bold) " ['@markup.strong'] = { bold = config.bold },
     call s:HL('@markup.emphasis', s:none, s:none, s:italic) " ['@markup.emphasis'] = { italic = config.italic.emphasis },
+    call s:HL('@markup.italic', s:none, s:none, s:italic) " ['@markup.emphasis'] = { italic = config.italic.emphasis },
     call s:HL('@markup.underline', s:none, s:none, s:underline) " ['@markup.underline'] = { underline = config.underline },
     call s:HL('@markup.strike', s:none, s:none, s:strikethrough) " ['@markup.strike'] = { strikethrough = config.strikethrough },
+    call s:HL('@markup.strikethrough', s:none, s:none, s:strikethrough) " ['@markup.strike'] = { strikethrough = config.strikethrough },
     highlight! link @markup.heading Title
     highlight! link @markup.raw String
     highlight! link @markup.math Special
@@ -724,8 +729,10 @@ if has('nvim')
     highlight! link @text MiningboxFg1
     call s:HL('@text.strong', s:none, s:none, s:bold) " ['@text.strong'] = { bold = config.bold },
     call s:HL('@text.emphasis', s:none, s:none, s:italic) " ['@text.emphasis'] = { italic = config.italic.emphasis },
+    call s:HL('@text.italic', s:none, s:none, s:italic) " ['@text.emphasis'] = { italic = config.italic.emphasis },
     call s:HL('@text.underline', s:none, s:none, s:underline) " ['@text.underline'] = { underline = config.underline },
     call s:HL('@text.strike', s:none, s:none, s:strikethrough) " ['@text.strike'] = { strikethrough = config.strikethrough },
+    call s:HL('@text.strikethrough', s:none, s:none, s:strikethrough) " ['@text.strike'] = { strikethrough = config.strikethrough },
     highlight! link @text.title Title
     highlight! link @text.literal String
     highlight! link @text.uri Underlined
@@ -758,6 +765,7 @@ if has('nvim')
     highlight! link @lsp.type.interface @constructor
     highlight! link @lsp.type.macro @macro
     highlight! link @lsp.type.method @method
+    highlight! link @lsp.type.modifier.java @keyword
     highlight! link @lsp.type.namespace @namespace
     highlight! link @lsp.type.parameter @parameter
     highlight! link @lsp.type.property @property

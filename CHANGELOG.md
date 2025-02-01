@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 
 ## [Unreleased]
 
+## 0.2.2
+
+- Added extra Treesitter groups (in Nvim)
+- Added Gitsigns support (in Nvim)
+- Fixed colorscheme in float windows (aka: preview hunk)
+
 ## 0.2.1
 
 - Added support Treesitter groups (in Nvim)
