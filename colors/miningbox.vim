@@ -72,6 +72,8 @@ if &background ==# 'light'
     endfor
 endif
 
+" }}}
+
 " Setup Colors: (on terminal uses 16 colors) {{{
 
 if s:istty
@@ -248,6 +250,8 @@ call s:HL('MiningboxOrangeBold', s:colors.orange, s:none, s:bold)
 call s:HL('MiningboxRedUnderline', s:none, s:none, s:undercurl, s:colors.red)
 call s:HL('MiningboxYellowUnderline', s:none, s:none, s:undercurl, s:colors.yellow)
 call s:HL('MiningboxBlueUnderline', s:none, s:none, s:undercurl, s:colors.blue)
+call s:HL('MiningboxAquaUnderline', s:none, s:none, s:undercurl, s:colors.aqua)
+call s:HL('MiningboxPurpleUnderline', s:none, s:none, s:undercurl, s:colors.purple)
 
 " }}}
 
@@ -291,14 +295,15 @@ highlight! link VisualNOS Visual
 
 call s:HL('Search', s:colors.yellow, s:colors.bg0, s:inverse)
 call s:HL('IncSearch', s:colors.orange, s:colors.bg0, s:inverse)
+highlight! link CurSearch IncSearch
 
 call s:HL('QuickFixLine', s:colors.bg0, s:colors.yellow, s:bold)
 
 call s:HL('Underlined', s:colors.blue, s:none, s:underline)
 
-call s:HL('StatusLine', s:colors.bg4, s:none)
-" italic, is IMPORTANT: fix ^ char in not current statusline
-call s:HL('StatusLineNC', s:colors.bg4, s:none, 'italic,')
+" italic, is IMPORTANT: highlight current statusline
+call s:HL('StatusLine', s:colors.bg4, s:none, 'italic,')
+call s:HL('StatusLineNC', s:colors.bg4, s:none)
 
 call s:HL('WinBar', s:colors.fg4, s:colors.bg0)
 call s:HL('WinBarNC', s:colors.fg3, s:colors.bg1)
@@ -357,6 +362,7 @@ highlight! link Special MiningboxOrange
 
 call s:HL('Comment', s:colors.gray, s:none, s:italic)
 call s:HL('Todo', s:vim_fg, s:none, s:bold . s:italic)
+call s:HL('Done', s:colors.orange, s:none, s:bold . s:italic)
 call s:HL('Error', s:colors.red, s:none, s:bold . s:inverse)
 call s:HL('Warning', s:colors.orange, s:none, s:bold . s:inverse)
 
@@ -448,6 +454,15 @@ call s:HL('DiffText',   s:colors.yellow, s:colors.bg0, s:inverse)
 
 " }}}
 
+" Spell: {{{
+
+highlight! link SpellCap MiningboxBlueUnderline
+highlight! link SpellBad MiningboxRedUnderline
+highlight! link SpellLocal MiningboxAquaUnderline
+highlight! link SpellRare MiningboxPurpleUnderline
+
+" }}}
+
 " Plugin specific -------------------------------------------------------------
 
 " Sneak: justinmk/vim-sneak {{{
@@ -455,6 +470,8 @@ call s:HL('DiffText',   s:colors.yellow, s:colors.bg0, s:inverse)
 highlight! link Sneak Cursor
 highlight! link SneakScope Search
 highlight! link SneakLabel Search
+
+" }}}
 
 " Signature: kshenoy/vim-signature{{{
 
@@ -478,6 +495,10 @@ call s:HL('GitSignsAdd', s:colors.bg4, s:none)
 call s:HL('GitSignsChange', s:colors.bg4, s:none)
 call s:HL('GitSignsDelete', s:colors.bg4, s:none)
 call s:HL('GitSignsChangeDelete', s:colors.bg4, s:none)
+call s:HL('GitSignsStagedAdd', s:colors.bg4, s:none)
+call s:HL('GitSignsStagedChange', s:colors.bg4, s:none)
+call s:HL('GitSignsStagedDelete', s:colors.bg4, s:none)
+call s:HL('GitSignsStagedChangeDelete', s:colors.bg4, s:none)
 highlight! link GitSignsCurrentLineBlame LineNr
 
 " }}}
@@ -493,9 +514,10 @@ call s:HL('ALEErrorSign', s:none, s:colors.neutral_red)
 call s:HL('ALEWarningSign', s:none, s:colors.neutral_red)
 call s:HL('ALEInfoSign', s:none, s:colors.neutral_blue)
 
-" Custom color #1 in statusline
+" Custom color # in statusline
 call s:HL('User1', s:none, s:colors.neutral_red)
 call s:HL('User2', s:none, s:colors.neutral_yellow)
+call s:HL('User3', s:colors.neutral_yellow, s:none)
 
 " }}}
 
@@ -558,9 +580,12 @@ highlight! link netrwVersion MiningboxGreen
 
 " }}}
 
-" Cmp: hrsh7th/nvim-cmp {{{
+" Nvim specific {{{
 
 if has('nvim')
+
+    " Cmp: hrsh7th/nvim-cmp {{{
+
     highlight! link CmpItemAbbr MiningboxFg0
     highlight! link CmpItemAbbrDeprecated MiningboxFg1
     highlight! link CmpItemAbbrMatch MiningboxBlueBold
@@ -591,6 +616,8 @@ if has('nvim')
     highlight! link CmpItemKindConstant MiningboxOrange
     highlight! link CmpItemKindStruct MiningboxYellow
     highlight! link CmpItemKindTypeParameter MiningboxYellow
+
+    " }}}
 endif
 
 " }}}
@@ -618,6 +645,9 @@ highlight! link diffIndexLine MiningboxPurple
 if !has('gui_running') && &background ==# 'dark'
     highlight! Normal guibg=NONE ctermbg=NONE
 endif
+
+" Ignored!
+" highlight! link Whitespace PmenuSbar
 
 " GitGutter sign column
 highlight! link CursorLineSign LineNr
