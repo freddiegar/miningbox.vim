@@ -618,6 +618,23 @@ if has('nvim')
     highlight! link CmpItemKindTypeParameter MiningboxYellow
 
     " }}}
+
+    " Mason: williamboman/mason.nvim {{{
+
+    highlight! link MasonHighlight GruvboxAqua
+    call s:HL('MasonHighlightBlock', s:colors.bg0, s:colors.blue)
+    call s:HL('MasonHighlightBlockBold', s:colors.bg0, s:colors.blue, s:bold)
+    call s:HL('MasonHighlightSecondary', s:colors.yellow, s:none)
+    call s:HL('MasonHighlightBlockSecondary', s:colors.bg0, s:colors.yellow)
+    call s:HL('MasonHighlightBlockBoldSecondary', s:colors.bg0, s:colors.yellow, s:bold)
+    highlight! link MasonHeader MasonHighlightBlockBoldSecondary
+    highlight! link MasonHeaderSecondary MasonHighlightBlockBold
+    call s:HL('MasonMuted', s:colors.fg4, s:none)
+    call s:HL('MasonMutedBlock', s:colors.bg0, s:colors.fg4)
+    call s:HL('MasonMutedBlockBold', s:colors.bg0, s:colors.fg4, s:bold)
+
+    " }}}
+
 endif
 
 " }}}

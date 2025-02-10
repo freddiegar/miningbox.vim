@@ -45,6 +45,7 @@ colorscheme miningbox
 ### Plugins ONLY nvim
 
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [mason.nvim](https://github.com/williamboman/mason.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 

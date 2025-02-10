@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 
 ## [Unreleased]
 
+## 0.2.3
+
+- Added Mason support (in Nvim)
 - Update minor changes in colors (statusline, Gitsigns, Spell and User3 colors)
 
 ## 0.2.2
