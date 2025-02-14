@@ -12,15 +12,15 @@ highlight! link WeirdWhitespace Warning
 augroup miningbox
     autocmd!
 
-    " Highlight diff markers
+    " Highlight diff markers. Please NOT! in notes this is AWFUL ... and only it's applied in Vim
     " @see :h :match
-    autocmd BufWinEnter * match Error /^[<\|=>]\{7}.*/
+    " autocmd BufWinEnter * match Error /\v^[<>=\|]{4,7}\s?[a-zA-Z-_]*$/
 
-    " Trailing spaces
+    " Trailing spaces. There are cleaned, then, doesnt matter ...  and only it's applied in Vim
     " @see https://vim.fandom.com/wiki/Highlight_unwanted_spaces
-    autocmd BufWinEnter * 2match ExtraWhitespace /\s\+$/
-    autocmd InsertEnter * 2match ExtraWhitespace /\s\+\%#\@<!$/
-    autocmd InsertLeave * 2match ExtraWhitespace /\s\+$/
+    " autocmd BufWinEnter * 2match ExtraWhitespace /\s\+$/
+    " autocmd InsertEnter * 2match ExtraWhitespace /\s\+\%#\@<!$/
+    " autocmd InsertLeave * 2match ExtraWhitespace /\s\+$/
 
     " Char 160
     " @see https://www.codetable.net/decimal/160

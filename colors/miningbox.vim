@@ -361,10 +361,11 @@ highlight! link lCursor Cursor
 highlight! link Special MiningboxOrange
 
 call s:HL('Comment', s:colors.gray, s:none, s:italic)
-call s:HL('Todo', s:vim_fg, s:none, s:bold . s:italic)
-call s:HL('Done', s:colors.orange, s:none, s:bold . s:italic)
+call s:HL('Todo', s:colors.yellow, s:none, s:bold . s:inverse)
+call s:HL('Done', s:colors.green, s:none, s:bold . s:inverse)
 call s:HL('Error', s:colors.red, s:none, s:bold . s:inverse)
 call s:HL('Warning', s:colors.orange, s:none, s:bold . s:inverse)
+call s:HL('Info', s:colors.blue, s:none, s:bold . s:inverse)
 
 " Generic statement
 highlight! link Statement MiningboxRed
