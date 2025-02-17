@@ -683,6 +683,27 @@ highlight! link EndOfBuffer LineNr
 if has('nvim')
     highlight! link LspInlayHint Comment
 
+    " highlight! link DiagnosticError Comment
+    highlight! link DiagnosticWarn Comment
+    highlight! link DiagnosticInfo Comment
+    highlight! link DiagnosticHint Comment
+    highlight! link DiagnosticOk Comment
+
+    highlight! link DiagnosticUnnecessary Comment
+    highlight! link DiagnosticDeprecated Comment
+
+    highlight! link DiagnosticUnderlineError DiagnosticError
+    highlight! link DiagnosticUnderlineWarn DiagnosticWarn
+    highlight! link DiagnosticUnderlineInfo DiagnosticInfo
+    highlight! link DiagnosticUnderlineHint DiagnosticHint
+    highlight! link DiagnosticUnderlineOk DiagnosticOk
+
+    highlight! link DiagnosticSignError MiningboxRed
+    highlight! link DiagnosticSignWarn MiningboxYellow
+    highlight! link DiagnosticSignInfo Comment
+    highlight! link DiagnosticSignHint Comment
+    highlight! link DiagnosticSignOk Comment
+
     highlight! link @comment Comment
     call s:HL('@none', s:none, s:none) " ['@none'] = {fg = 'NONE',  bg = 'NONE' },
     highlight! link @preproc PreProc
