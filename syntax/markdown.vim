@@ -18,13 +18,13 @@ syntax match markdownNotesStatusDone        /\v(^D: | D: )/ skipempty contained
 syntax match markdownNotesStatusQuality     /\v(^Q: | Q: )/ skipempty contained
 syntax match markdownNotesStatusStopped     /\v(^S: | S: )/ skipempty contained
 
-syntax match markdownNotesFix       /\v\c[0|Z] \w{6,9} (<(hot)?fi[x|s]_?>|security):? ?/            skipempty contained
-syntax match markdownNotesRefactor  /\v\c[0|Z] \w{6,9} (ref?actor|remove): ?/                       skipempty contained
-syntax match markdownNotesTest      /\v\c[0|Z] \w{6,9} (tes?t?s?|tests?\(.*\)): ?/                  skipempty contained
-syntax match markdownNotesFeature   /\v\c[0|Z] \w{6,9} (feature|fea[t|r]|db:|<config>|<perf>):? ?/  skipempty contained
-syntax match markdownNotesCi        /\v\c[0|Z] \w{6,9} (<c[i|d]>|<core>):? ?/                       skipempty contained
-syntax match markdownNotesWip       /\v\c[0|Z] \w{6,9} wip:? ?/                                     skipempty contained
-syntax match markdownNotesRevert    /\v\c[0|Z] \w{6,9} Revert /                                     skipempty contained
+syntax match markdownNotesFix       /\v (<(hot)?fi[x|s]_?>|security):? ?/            skipempty contained
+syntax match markdownNotesRefactor  /\v (ref?actor|remove): ?/                       skipempty contained
+syntax match markdownNotesTest      /\v (tes?t?s?|tests?\(.*\)): ?/                  skipempty contained
+syntax match markdownNotesFeature   /\v (feature|fea[t|r]|db:|<config>|<perf>):? ?/  skipempty contained
+syntax match markdownNotesCi        /\v (<c[i|d]>|<core>):? ?/                       skipempty contained
+syntax match markdownNotesWip       /\v wip:? ?/                                     skipempty contained
+syntax match markdownNotesRevert    /\v Revert /                                     skipempty contained
 
 syntax match markdownNotesHourSunrise /\vT(01|02|03|04|05|06):\d{2}:\d{2}/ skipempty contained
 syntax match markdownNotesHourMorning /\vT(07|08|09|10|11|12):\d{2}:\d{2}/ skipempty contained
@@ -46,8 +46,8 @@ highlight! link markdownNotesChecking   MiningboxOrange
 highlight! link markdownNotesAlmuerzo   Comment
 highlight! link markdownNotesFDD        Comment
 
-highlight! link markdownNotesStatusTodo         DiffChange
-highlight! link markdownNotesStatusInProgress   Info
+highlight! link markdownNotesStatusTodo         Info
+highlight! link markdownNotesStatusInProgress   DiffChange
 highlight! link markdownNotesStatusPullRequest  FloatShadow
 highlight! link markdownNotesStatusDone         Pmenu
 highlight! link markdownNotesStatusQuality      Warning
