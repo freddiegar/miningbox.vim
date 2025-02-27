@@ -1,4 +1,4 @@
-if exists("b:current_syntax") && b:current_syntax =~ 'sql'
+if exists('b:current_syntax') && b:current_syntax =~ 'sql'
     finish
 endif
 

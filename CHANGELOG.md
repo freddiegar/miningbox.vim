@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 
 - Fixed TODO, DONE, INFO highlights, use inverse
 - Added a little highlight for notes (my custom notes)
-- Removed highlights in diff markers and extra whitespaces (only applyes to Vim)
+- Added colors for debug logs in sql files (only applies to Vim)
+- Removed highlights in diff markers and extra whitespaces (only applies to Vim)
 
 ## 0.2.3
 

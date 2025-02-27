@@ -1,4 +1,4 @@
-if exists("b:current_syntax") && b:current_syntax =~ 'markdown'
+if exists('b:current_syntax') && b:current_syntax =~ 'markdown'
     finish
 endif
 
