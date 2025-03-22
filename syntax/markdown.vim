@@ -18,13 +18,18 @@ syntax match markdownNotesStatusDone        /\v(^D: | D: )/ skipempty contained
 syntax match markdownNotesStatusQuality     /\v(^Q: | Q: )/ skipempty contained
 syntax match markdownNotesStatusStopped     /\v(^S: | S: )/ skipempty contained
 
-syntax match markdownNotesFix       /\v (<(hot)?fi[x|s]_?>|security):? ?/            skipempty contained
-syntax match markdownNotesRefactor  /\v (ref?actor|remove): ?/                       skipempty contained
-syntax match markdownNotesTest      /\v (tes?t?s?|tests?\(.*\)): ?/                  skipempty contained
-syntax match markdownNotesFeature   /\v (feature|fea[t|r]|db:|<config>|<perf>):? ?/  skipempty contained
-syntax match markdownNotesCi        /\v (<c[i|d]>|<core>):? ?/                       skipempty contained
-syntax match markdownNotesWip       /\v wip:? ?/                                     skipempty contained
-syntax match markdownNotesRevert    /\v Revert /                                     skipempty contained
+" @see https://vi.stackexchange.com/a/22431
+" @see https://learnbyexample.github.io/vim_reference/Regular-Expressions.html#lookarounds
+syntax match markdownNotesHash      /\v:00 \w{6,9} ?/ containedin=markdownNotesFix,markdownNotesRefactor,markdownNotesTest,markdownNotesFeature,markdownNotesCi,markdownNotesWip,markdownNotesRevert contained
+
+" Uses hash prefix regex!
+syntax match markdownNotesFix       /\v:00? \w{6,9} (<(hot)?fi[x|s]_?>|security):? ?/               skipempty contained
+syntax match markdownNotesRefactor  /\v:00? \w{6,9} (ref?actor|remove):? ?/                         skipempty contained
+syntax match markdownNotesTest      /\v:00? \w{6,9} (tes?t?s?|tests?\(.*\)):? ?/                    skipempty contained
+syntax match markdownNotesFeature   /\v:00? \w{6,9} (feature|fea[t|r]|db|update|config|perf):? ?/   skipempty contained
+syntax match markdownNotesCi        /\v:00? \w{6,9} (c[i|d]|ch?ore):? ?/                          skipempty contained
+syntax match markdownNotesWip       /\v:00? \w{6,9} wip:? ?/                                        skipempty contained
+syntax match markdownNotesRevert    /\v:00? \w{6,9} Revert:? ?/                                        skipempty contained
 
 syntax match markdownNotesHourSunrise /\vT(01|02|03|04|05|06):\d{2}:\d{2}/ skipempty contained
 syntax match markdownNotesHourMorning /\vT(07|08|09|10|11|12):\d{2}:\d{2}/ skipempty contained

@@ -287,8 +287,10 @@ call s:HL('ColorColumn', s:none, s:colors.bg1)
 " Concealed element: \lambda → λ
 call s:HL('Conceal', s:colors.blue, s:none)
 
-highlight! NonText ctermfg=238 guifg=#2E2E2E
-highlight! SpecialKey ctermfg=238 guifg=#2E2E2E
+" Invisible chars
+" Whitespace extends from NonText
+call s:HL('NonText', s:colors.bg3, s:none)
+highlight! link SpecialKey NonText
 
 call s:HL('Visual', (s:istty ? s:colors.gray : s:none), s:colors.bg3, s:inverse)
 highlight! link VisualNOS Visual
@@ -663,9 +665,6 @@ highlight! link diffIndexLine MiningboxPurple
 if !has('gui_running') && &background ==# 'dark'
     highlight! Normal guibg=NONE ctermbg=NONE
 endif
-
-" Ignored!
-" highlight! link Whitespace PmenuSbar
 
 " GitGutter sign column
 highlight! link CursorLineSign LineNr

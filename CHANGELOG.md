@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 
 ## [Unreleased]
 
+## 0.2.5
+
+- Updated systax for markdown notes: ignores hash commit
+
 ## 0.2.4
 
 - Fixed TODO, DONE, INFO highlights, use inverse
