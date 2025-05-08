@@ -15,6 +15,7 @@ syntax match markdownNotesStatusTodo        /\v(^T: | T: )/ skipempty contained
 syntax match markdownNotesStatusInProgress  /\v(^I: | I: )/ skipempty contained
 syntax match markdownNotesStatusPullRequest /\v(^P: | P: )/ skipempty contained
 syntax match markdownNotesStatusDone        /\v(^D: | D: )/ skipempty contained
+syntax match markdownNotesStatusReview      /\v(^R: | R: )/ skipempty contained
 syntax match markdownNotesStatusQuality     /\v(^Q: | Q: )/ skipempty contained
 syntax match markdownNotesStatusStopped     /\v(^S: | S: )/ skipempty contained
 
@@ -37,7 +38,7 @@ syntax match markdownNotesHourEvening /\vT(13|14|15|16|17|18):\d{2}:\d{2}/ skipe
 syntax match markdownNotesHourNight   /\vT(19|20|21|22|23|00):\d{2}:\d{2}/ skipempty contained
 
 syntax match markdownNotesContent   /[^=]\S\+/
-            \ contains=markdownNotesAlmuerzo,markdownNotesFDD,markdownListMarker,markdownNotesHourSunrise,markdownNotesHourMorning,markdownNotesHourEvening,markdownNotesHourNight,markdownNotesFix,markdownNotesRefactor,markdownNotesTest,markdownNotesFeature,markdownNotesCi,markdownNotesWip,markdownNotesRevert,markdownNotesStatusTodo,markdownNotesStatusInProgress,markdownNotesStatusPullRequest,markdownNotesStatusDone,markdownNotesStatusQuality,markdownNotesStatusStopped
+            \ contains=markdownNotesAlmuerzo,markdownNotesFDD,markdownListMarker,markdownNotesHourSunrise,markdownNotesHourMorning,markdownNotesHourEvening,markdownNotesHourNight,markdownNotesFix,markdownNotesRefactor,markdownNotesTest,markdownNotesFeature,markdownNotesCi,markdownNotesWip,markdownNotesRevert,markdownNotesStatusTodo,markdownNotesStatusInProgress,markdownNotesStatusPullRequest,markdownNotesStatusDone,markdownNotesStatusReview,markdownNotesStatusQuality,markdownNotesStatusStopped
             \ skipempty
 syntax match markdownNotesTime      /\v \d{2}:\d{2} /
             \ nextgroup=markdownNotesContent
@@ -55,6 +56,7 @@ highlight! link markdownNotesStatusTodo         Info
 highlight! link markdownNotesStatusInProgress   DiffChange
 highlight! link markdownNotesStatusPullRequest  FloatShadow
 highlight! link markdownNotesStatusDone         Pmenu
+highlight! link markdownNotesStatusReview       MiningboxPurpleInverse
 highlight! link markdownNotesStatusQuality      Warning
 highlight! link markdownNotesStatusStopped      Error
 

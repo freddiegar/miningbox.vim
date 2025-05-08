@@ -18,6 +18,7 @@ T: Todo
 I: In Progress
 P: Pull Request
 D: Done
+R: Review
 Q: Quality
 S: Stopped
 
@@ -27,6 +28,7 @@ S: Stopped
 - I: In Progress
 - P: Pull Request
 - D: Done
+- R: Review
 - Q: Quality
 - S: Stopped
 

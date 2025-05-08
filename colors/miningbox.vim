@@ -242,6 +242,7 @@ call s:HL('MiningboxBlue', s:colors.blue)
 call s:HL('MiningboxBlueBold', s:colors.blue, s:none, s:bold)
 call s:HL('MiningboxPurple', s:colors.purple)
 " call s:HL('MiningboxPurpleBold', s:colors.purple, s:none, s:bold)
+call s:HL('MiningboxPurpleInverse', s:colors.purple, s:none, s:inverse)
 call s:HL('MiningboxAqua', s:colors.aqua)
 " call s:HL('MiningboxAquaBold', s:colors.aqua, s:none, s:bold)
 call s:HL('MiningboxOrange', s:colors.orange)
@@ -580,6 +581,7 @@ highlight! link netrwList MiningboxBlue
 highlight! link netrwHelpCmd MiningboxAqua
 highlight! link netrwCmdSep MiningboxFg3
 highlight! link netrwVersion MiningboxGreen
+highlight! link netrwMarkFile MiningboxPurple
 
 " }}}
 
